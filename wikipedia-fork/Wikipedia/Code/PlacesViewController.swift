@@ -1951,7 +1951,24 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
         let searchResult = MWKSearchResult(articleID: 0, revID: 0, title: title, displayTitle: displayTitle, displayTitleHTML: displayTitleHTML, wikidataDescription: article.wikidataDescription, extract: article.snippet, thumbnailURL: article.thumbnailURL, index: nil, titleNamespace: nil, location: article.location)
         currentSearch = PlaceSearch(filter: .top, type: .location, origin: .user, sortStyle: .links, string: nil, region: region, localizedDescription: title, searchResult: searchResult, siteURL: articleURL.wmf_site)
     }
-    
+
+    @objc
+    public func showCoordinates(_ coordinates: String) {
+        // Apparently this is needed to force view instantiation?
+        // Look into queuing zooming & panning the map view when the view is properly loaded, instead of poking the view like this.
+        guard view != nil else {
+            return
+        }
+
+        guard let latLong = coordinates.getLatitudeLongitude else {
+            assertionFailure("Expected coordinates to be present")
+            return
+        }
+
+        let location = CLLocation(latitude: latLong[0], longitude: latLong[1])
+        zoomAndPanMapView(toLocation: location)
+    }
+
     fileprivate func searchForFirstSearchSuggestion() {
         if !searchSuggestionController.searches[PlaceSearchSuggestionController.completionSection].isEmpty {
             currentSearch = searchSuggestionController.searches[PlaceSearchSuggestionController.completionSection][0]

@@ -1162,6 +1162,8 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
             return YES;
         case WMFUserActivityTypeSearchResults:
             return [activity wmf_searchTerm] != nil;
+        case WMFUserActivityTypePlacesCoordinates:
+            return [activity wmf_placesCoordinates] != nil;
         case WMFUserActivityTypeLink:
             return [activity wmf_linkURL] != nil;
         default:
@@ -1199,16 +1201,12 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
             [self setSelectedIndex:WMFAppTabTypeMain];
             [self.currentTabNavigationController popToRootViewControllerAnimated:animated];
             break;
+        case WMFUserActivityTypePlacesCoordinates:
         case WMFUserActivityTypePlaces: {
             [self dismissPresentedViewControllers];
             [self setSelectedIndex:WMFAppTabTypePlaces];
             [self.currentTabNavigationController popToRootViewControllerAnimated:animated];
-            NSURL *articleURL = activity.wmf_linkURL;
-            if (articleURL) {
-                // For "View on a map" action to succeed, view mode has to be set to map.
-                [[self placesViewController] updateViewModeToMap];
-                [[self placesViewController] showArticleURL:articleURL];
-            }
+            [self displayPlacesTabWithActivity:activity];
         } break;
         case WMFUserActivityTypeContent: {
             [self dismissPresentedViewControllers];
@@ -1330,6 +1328,31 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
 
     return contentURL;
 }
+
+- (void)displayPlacesTabWithActivity:(NSUserActivity *)activity {
+    
+    NSURL *articleURL = activity.wmf_linkURL;
+    NSString *placesCoordinates = activity.wmf_placesCoordinates;
+
+    if (articleURL) {
+        [self displayPlacesWithArticleURL:articleURL];
+    } else if (placesCoordinates) {
+        [self displayPlacesWithCoordinates:placesCoordinates];
+    }
+}
+
+- (void)displayPlacesWithArticleURL:(NSURL *)articleURL {
+    // For "View on a map" action to succeed, view mode has to be set to map.
+    [[self placesViewController] updateViewModeToMap];
+    [[self placesViewController] showArticleURL:articleURL];
+}
+
+- (void)displayPlacesWithCoordinates:(NSString *)placesCoordinates {
+    // For "View on a map" action to succeed, view mode has to be set to map.
+    [[self placesViewController] updateViewModeToMap];
+    [[self placesViewController] showCoordinates:placesCoordinates];
+}
+
 
 #pragma mark - Utilities
 

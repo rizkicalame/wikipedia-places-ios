@@ -5,6 +5,7 @@
 @import MobileCoreServices;
 
 NSString *const WMFNavigateToActivityNotification = @"WMFNavigateToActivityNotification";
+NSString *const WMFPlacesCoordinatesKey = @"WMFPlacesCoordinates";
 
 // Use to suppress "User-facing text should use localized string macro" Analyzer warning
 // where appropriate.
@@ -62,15 +63,26 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
 + (instancetype)wmf_placesActivityWithURL:(NSURL *)activityURL {
     NSURLComponents *components = [NSURLComponents componentsWithURL:activityURL resolvingAgainstBaseURL:NO];
     NSURL *articleURL = nil;
+    NSString *placesCoordinates = nil;
     for (NSURLQueryItem *item in components.queryItems) {
         if ([item.name isEqualToString:@"WMFArticleURL"]) {
             NSString *articleURLString = item.value;
             articleURL = [NSURL URLWithString:articleURLString];
             break;
         }
+
+        if ([item.name isEqualToString: WMFPlacesCoordinatesKey]) {
+            placesCoordinates = item.value;
+        }
     }
+
     NSUserActivity *activity = [self wmf_pageActivityWithName:@"Places"];
     activity.webpageURL = articleURL;
+
+    if (placesCoordinates) {
+        activity.userInfo = @{WMFPlacesCoordinatesKey: placesCoordinates};
+    }
+
     return activity;
 }
 
@@ -230,6 +242,8 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
         return WMFUserActivityTypeContent;
     } else if ([self.activityType isEqualToString:CSQueryContinuationActionType]) {
         return WMFUserActivityTypeSearchResults;
+    } else if ([self wmf_placesCoordinates]) {
+        return WMFUserActivityTypePlacesCoordinates;
     } else {
         return WMFUserActivityTypeLink;
     }
@@ -262,6 +276,10 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
     } else {
         return self.webpageURL;
     }
+}
+
+- (NSString *)wmf_placesCoordinates {
+    return self.userInfo[WMFPlacesCoordinatesKey];
 }
 
 - (NSURL *)wmf_contentURL {
