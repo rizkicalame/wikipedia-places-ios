@@ -62,3 +62,4 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 wikipedia-places-ios.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 wikipedia-places-ios.xcworkspace/contents.xcworkspacedata
+*.DS_Store
