@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C909C312C76576500D92742 /* wikipedia_places_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */; };
-		3C909C332C76576500D92742 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C322C76576500D92742 /* ContentView.swift */; };
+		3C909C332C76576500D92742 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C322C76576500D92742 /* HomeView.swift */; };
 		3C909C352C76576600D92742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C342C76576600D92742 /* Assets.xcassets */; };
 		3C909C382C76576600D92742 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C372C76576600D92742 /* Preview Assets.xcassets */; };
 		3C909C422C76576600D92742 /* wikipedia_places_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C412C76576600D92742 /* wikipedia_places_iosTests.swift */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		3C909C2D2C76576500D92742 /* wikipedia-places-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wikipedia-places-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wikipedia_places_iosApp.swift; sourceTree = "<group>"; };
-		3C909C322C76576500D92742 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3C909C322C76576500D92742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3C909C342C76576600D92742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C909C372C76576600D92742 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3C909C3D2C76576600D92742 /* wikipedia-places-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wikipedia-places-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +94,8 @@
 		3C909C2F2C76576500D92742 /* wikipedia-places-ios */ = {
 			isa = PBXGroup;
 			children = (
-				3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */,
-				3C909C322C76576500D92742 /* ContentView.swift */,
+				3C909C5E2C76640E00D92742 /* App */,
+				3C909C5D2C7663FB00D92742 /* Scenes */,
 				3C909C342C76576600D92742 /* Assets.xcassets */,
 				3C909C362C76576600D92742 /* Preview Content */,
 			);
@@ -125,6 +125,22 @@
 				3C909C4D2C76576600D92742 /* wikipedia_places_iosUITestsLaunchTests.swift */,
 			);
 			path = "wikipedia-places-iosUITests";
+			sourceTree = "<group>";
+		};
+		3C909C5D2C7663FB00D92742 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3C909C322C76576500D92742 /* HomeView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3C909C5E2C76640E00D92742 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C909C332C76576500D92742 /* ContentView.swift in Sources */,
+				3C909C332C76576500D92742 /* HomeView.swift in Sources */,
 				3C909C312C76576500D92742 /* wikipedia_places_iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
