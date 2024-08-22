@@ -1,0 +1,11 @@
+//
+//  Config-Debug.xcconfig
+//  wikipedia-places-ios
+//
+//  Created by Rizki Calame on 22/08/2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_URL = https:/$()/raw.githubusercontent.com
