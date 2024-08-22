@@ -13,9 +13,15 @@ protocol GetLocationsUseCaseInterface {
 
 final class GetLocationsUseCase: GetLocationsUseCaseInterface {
 
+    private let repository: LocationsRepositoryInterface
+
+    init(repository: LocationsRepositoryInterface) {
+        self.repository = repository
+    }
+
     // MARK: - GetLocationsUseCaseInterface
 
     func getLocations() async throws -> [LocationDomainModel] {
-        return [LocationDomainModel(name: "Test", latitude: 52.3547498, longitude: 4.8339215)]
+        return try await repository.getLocations()
     }
 }

@@ -11,7 +11,16 @@ import SwiftUI
 struct wikipedia_places_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: HomeViewModel(getLocationsUseCase: GetLocationsUseCase()))
+            HomeView(viewModel: makeHomeViewModel())
         }
+    }
+
+    @MainActor
+    private func makeHomeViewModel() -> HomeViewModel {
+        let apiClient = APIClient(baseURL: try! Configuration.value(for: "API_URL"))
+        let repository = LocationsRepository(apiClient: apiClient)
+        let useCase = GetLocationsUseCase(repository: repository)
+        let viewModel = HomeViewModel(getLocationsUseCase: useCase)
+        return viewModel
     }
 }

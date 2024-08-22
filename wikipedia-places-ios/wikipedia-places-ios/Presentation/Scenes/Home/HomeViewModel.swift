@@ -6,9 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
 @MainActor
 final class HomeViewModel: ObservableObject {
+
+    // MARK: - State
+
+    enum State {
+        case error(Error)
+        case loading
+        case loaded
+    }
+
+    // MARK: - Publishable objects
+
+    @Published var locations: [LocationDomainModel] = []
+    @Published var state: State = .loading
 
     // MARK: - Properties
 
@@ -31,13 +45,19 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
+    func onRowTapped(location: LocationDomainModel) {
+        let url = URL(string: "wikipedia://places/?WMFPlacesCoordinates=\(location.latitude),\(location.longitude)")!
+        UIApplication.shared.open(url)
+    }
+
     // MARK: - Private
 
     private func handleLocations(_ locations: [LocationDomainModel]) {
-        print(locations)
+        state = .loaded
+        self.locations = locations
     }
 
     private func handleError(_ error: Error) {
-        print(error)
+        state = .error(error)
     }
 }
