@@ -17,6 +17,8 @@
 		3C676C752C773F4F00641261 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C742C773F4F00641261 /* Configuration.swift */; };
 		3C676C772C77472400641261 /* LocationsRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C762C77472400641261 /* LocationsRepositoryInterface.swift */; };
 		3C676C792C7747F100641261 /* LocationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C782C7747F100641261 /* LocationsRepository.swift */; };
+		3C676C7D2C77B4EF00641261 /* AddCustomLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C7C2C77B4EF00641261 /* AddCustomLocationUseCase.swift */; };
+		3C676C822C77B88300641261 /* LocationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C812C77B88300641261 /* LocationCellView.swift */; };
 		3C909C312C76576500D92742 /* wikipedia_places_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */; };
 		3C909C332C76576500D92742 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C322C76576500D92742 /* HomeView.swift */; };
 		3C909C352C76576600D92742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C342C76576600D92742 /* Assets.xcassets */; };
@@ -57,6 +59,8 @@
 		3C676C742C773F4F00641261 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3C676C762C77472400641261 /* LocationsRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsRepositoryInterface.swift; sourceTree = "<group>"; };
 		3C676C782C7747F100641261 /* LocationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsRepository.swift; sourceTree = "<group>"; };
+		3C676C7C2C77B4EF00641261 /* AddCustomLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationUseCase.swift; sourceTree = "<group>"; };
+		3C676C812C77B88300641261 /* LocationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellView.swift; sourceTree = "<group>"; };
 		3C909C2D2C76576500D92742 /* wikipedia-places-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wikipedia-places-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wikipedia_places_iosApp.swift; sourceTree = "<group>"; };
 		3C909C322C76576500D92742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				3C676C5B2C767A8400641261 /* GetLocationsUseCase.swift */,
+				3C676C7C2C77B4EF00641261 /* AddCustomLocationUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 		3C676C7B2C776DD900641261 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				3C676C812C77B88300641261 /* LocationCellView.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -434,7 +440,9 @@
 				3C909C332C76576500D92742 /* HomeView.swift in Sources */,
 				3C676C772C77472400641261 /* LocationsRepositoryInterface.swift in Sources */,
 				3C676C792C7747F100641261 /* LocationsRepository.swift in Sources */,
+				3C676C822C77B88300641261 /* LocationCellView.swift in Sources */,
 				3C676C5C2C767A8400641261 /* GetLocationsUseCase.swift in Sources */,
+				3C676C7D2C77B4EF00641261 /* AddCustomLocationUseCase.swift in Sources */,
 				3C676C532C7678C200641261 /* HomeViewModel.swift in Sources */,
 				3C676C642C767DB800641261 /* DataModelInterface.swift in Sources */,
 				3C676C752C773F4F00641261 /* Configuration.swift in Sources */,

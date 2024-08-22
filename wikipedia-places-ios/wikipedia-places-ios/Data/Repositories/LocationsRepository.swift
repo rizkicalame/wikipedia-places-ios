@@ -9,7 +9,10 @@ import Foundation
 
 final class LocationsRepository: LocationsRepositoryInterface {
 
+    // MARK: - Properties
+
     private let apiClient: APIClientInterface
+    private var customLocations = [LocationDataModel]()
 
     // MARK: - Init
 
@@ -27,5 +30,10 @@ final class LocationsRepository: LocationsRepositoryInterface {
         return dataModels.map {
             $0.toDomainModel()
         }
+    }
+
+    func createCustomLocation(location: LocationDomainModel) {
+        let dataModel = location.toDataModel()
+        customLocations.append(dataModel)
     }
 }

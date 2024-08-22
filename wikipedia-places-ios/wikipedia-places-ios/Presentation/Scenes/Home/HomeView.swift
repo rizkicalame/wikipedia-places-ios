@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     // MARK: - Constants
+
     enum Constants {
         static let listPadding = EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
     }
@@ -24,13 +25,12 @@ struct HomeView: View {
         self.viewModel = viewModel
     }
 
+    // MARK: - View
+
     var body: some View {
         switch viewModel.state {
         case .loading:
-            ProgressView()
-                .task {
-                    await self.viewModel.fetchLocations()
-                }
+            loadingView()
         case .error(let error):
             errorView(error: error)
         case .loaded:
@@ -38,16 +38,32 @@ struct HomeView: View {
         }
     }
 
+    func loadingView() -> some View {
+        ProgressView()
+            .task {
+                await self.viewModel.fetchLocations()
+            }
+    }
+
     func loadedView() -> some View {
-        List(viewModel.locations) { location in
-            Button(action: {
-                self.viewModel.onRowTapped(location: location)
-            }, label: {
-                VStack(alignment: .leading) {
-                    Text(location.presentedName)
-                    Text(location.presentedCoordinates)
+        List {
+            Section {
+                ForEach(self.viewModel.locations, id: \.id) { location in
+                    LocationCellView(name: location.presentedName, 
+                                     coordinates: location.presentedCoordinates) {
+                        self.viewModel.onRowTapped(location: location)
+                    }
                 }
-            })
+            }
+
+            Section {
+                Button {
+
+                } label: {
+                    Text("Add custom location")
+                }
+
+            }
         }
         .padding(Constants.listPadding)
         .refreshable {
@@ -59,7 +75,7 @@ struct HomeView: View {
         Text("Error: \(error)")
     }
 }
-
-#Preview {
-    HomeView(viewModel: HomeViewModel(getLocationsUseCase: GetLocationsUseCase(repository: LocationsRepository(apiClient: APIClient(baseURL: "")))))
-}
+//
+//#Preview {
+//    HomeView(viewModel: HomeViewModel(getLocationsUseCase: GetLocationsUseCase(repository: LocationsRepository(apiClient: APIClient(baseURL: ""))), addCustomLocationUseCase: AddCustomLocationUseCase(repository: LocationsRepository(apiClient: APIClient(baseURL: "")))))
+//}

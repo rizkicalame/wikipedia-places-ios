@@ -19,8 +19,10 @@ struct wikipedia_places_iosApp: App {
     private func makeHomeViewModel() -> HomeViewModel {
         let apiClient = APIClient(baseURL: try! Configuration.value(for: "API_URL"))
         let repository = LocationsRepository(apiClient: apiClient)
-        let useCase = GetLocationsUseCase(repository: repository)
-        let viewModel = HomeViewModel(getLocationsUseCase: useCase)
+        let getLocationsUseCase = GetLocationsUseCase(repository: repository)
+        let addCustomLocationUseCase = AddCustomLocationUseCase(repository: repository)
+        let viewModel = HomeViewModel(getLocationsUseCase: getLocationsUseCase,
+                                      addCustomLocationUseCase: addCustomLocationUseCase)
         return viewModel
     }
 }

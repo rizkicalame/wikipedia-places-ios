@@ -28,4 +28,12 @@ struct LocationDomainModel: DomainModelInterface, Identifiable {
     var presentedCoordinates: String {
         "\(latitude ), \(longitude)"
     }
+
+    // MARK: - DomainModelInterface
+
+    func toDataModel() -> LocationDataModel {
+        LocationDataModel(name: name, 
+                          latitude: latitude,
+                          longitude: longitude)
+    }
 }

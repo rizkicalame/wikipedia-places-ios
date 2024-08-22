@@ -9,4 +9,5 @@ import Foundation
 
 protocol LocationsRepositoryInterface {
     func getLocations() async throws -> [LocationDomainModel]
+    func createCustomLocation(location: LocationDomainModel)
 }

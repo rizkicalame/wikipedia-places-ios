@@ -8,6 +8,7 @@
 import Foundation
 
 protocol DomainModelInterface {
-    /// Conform to specific functions if needed.
-    /// E.g. map back to a data model for POST requests, etc.
+    associatedtype DataModelType: DataModelInterface
+
+    func toDataModel() -> DataModelType
 }
