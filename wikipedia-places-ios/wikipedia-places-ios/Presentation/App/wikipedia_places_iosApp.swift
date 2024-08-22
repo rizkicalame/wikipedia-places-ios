@@ -11,7 +11,7 @@ import SwiftUI
 struct wikipedia_places_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(viewModel: HomeViewModel(getLocationsUseCase: GetLocationsUseCase()))
         }
     }
 }

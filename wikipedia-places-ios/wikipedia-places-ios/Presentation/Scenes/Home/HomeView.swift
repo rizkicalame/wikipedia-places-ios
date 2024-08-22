@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
+
+    @ObservedObject var viewModel: HomeViewModel
+
+    // MARK: - Init
+
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
+
     var body: some View {
         VStack {
             Button("Open Wiki") {
@@ -16,9 +25,12 @@ struct HomeView: View {
             }
         }
         .padding()
+        .task {
+            await viewModel.fetchLocations()
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel(getLocationsUseCase: GetLocationsUseCase()))
 }
