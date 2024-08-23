@@ -29,6 +29,8 @@
 		3C676CD52C78BAF600641261 /* FormInputLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD42C78BAF600641261 /* FormInputLabel.swift */; };
 		3C676CD72C78BB9500641261 /* FormInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD62C78BB9500641261 /* FormInputField.swift */; };
 		3C676CDA2C78BD6C00641261 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD92C78BD6C00641261 /* RoundedCorners.swift */; };
+		3C676CDC2C78BE8C00641261 /* AddCustomLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */; };
+		3C676CDF2C78C19000641261 /* WikipediaDeeplinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */; };
 		3C909C332C76576500D92742 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C322C76576500D92742 /* HomeView.swift */; };
 		3C909C352C76576600D92742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C342C76576600D92742 /* Assets.xcassets */; };
 		3C909C382C76576600D92742 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C372C76576600D92742 /* Preview Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		3C676CD42C78BAF600641261 /* FormInputLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputLabel.swift; sourceTree = "<group>"; };
 		3C676CD62C78BB9500641261 /* FormInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputField.swift; sourceTree = "<group>"; };
 		3C676CD92C78BD6C00641261 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationViewModel.swift; sourceTree = "<group>"; };
+		3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDeeplinkHelper.swift; sourceTree = "<group>"; };
 		3C909C2D2C76576500D92742 /* wikipedia-places-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wikipedia-places-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C909C322C76576500D92742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3C909C342C76576600D92742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				3C676CCB2C77E7A700641261 /* AddCustomLocationView.swift */,
+				3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */,
 			);
 			path = AddCustomLocation;
 			sourceTree = "<group>";
@@ -283,6 +288,14 @@
 				3C676CD92C78BD6C00641261 /* RoundedCorners.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		3C676CDD2C78C18300641261 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3C909C242C76576500D92742 = {
@@ -308,6 +321,7 @@
 		3C909C2F2C76576500D92742 /* wikipedia-places-ios */ = {
 			isa = PBXGroup;
 			children = (
+				3C676CDD2C78C18300641261 /* Helpers */,
 				3C676C732C773EDF00641261 /* Info.plist */,
 				3C676C6B2C772FA600641261 /* Configurations */,
 				3C676C682C772E1D00641261 /* Networking */,
@@ -494,6 +508,8 @@
 				3C909C332C76576500D92742 /* HomeView.swift in Sources */,
 				3C676CD52C78BAF600641261 /* FormInputLabel.swift in Sources */,
 				3C676C772C77472400641261 /* LocationsRepositoryInterface.swift in Sources */,
+				3C676CDC2C78BE8C00641261 /* AddCustomLocationViewModel.swift in Sources */,
+				3C676CDF2C78C19000641261 /* WikipediaDeeplinkHelper.swift in Sources */,
 				3C676C792C7747F100641261 /* LocationsRepository.swift in Sources */,
 				3C676CD02C78985700641261 /* CustomLocationsCache.swift in Sources */,
 				3C676CD72C78BB9500641261 /* FormInputField.swift in Sources */,

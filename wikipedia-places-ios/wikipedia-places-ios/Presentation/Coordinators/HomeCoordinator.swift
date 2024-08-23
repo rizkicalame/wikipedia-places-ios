@@ -40,11 +40,31 @@ class HomeCoordinator: CoordinatorInterface {
         self.navigationController.dismiss(animated: true)
     }
 
+    private func deeplinkToWikipedia(location: LocationDomainModel) {
+        guard let url = URL(string: WikipediaDeeplinkHelper.getCoordinatesDeeplinkURL(location: location)) else {
+            return
+        }
+
+        UIApplication.shared.open(url) { success in
+            if !success {
+                // Error handling
+                let alertController = UIAlertController(title: "Oops! Deeplinking failed.", message: "We weren't able to deeplinking to the Wikipedia app.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Close", style: .cancel)
+                alertController.addAction(action)
+                self.navigationController.present(alertController, animated: true)
+            }
+        }
+    }
+
     // MARK: - Home
 
+
     @MainActor
+    /// Bootstrap dependencies for `Home`.
+    /// Could be moved into a factory method or using dependency containers.
+    /// - Returns: UIViewController for home
     private func makeHomeViewController() -> UIViewController {
-        let apiClient = APIClient(baseURL: try! Configuration.value(for: "API_URL"))
+        let apiClient = APIClient(baseURL: Configuration.value(for: .apiURL))
         let repository = LocationsRepository(apiClient: apiClient)
         let getLocationsUseCase = GetLocationsUseCase(repository: repository)
         let addCustomLocationUseCase = AddCustomLocationUseCase(repository: repository)
@@ -69,8 +89,11 @@ class HomeCoordinator: CoordinatorInterface {
         self.navigationController.present(navigationController, animated: true)
     }
 
+    /// Bootstrap dependencies for `AddCustomLocations`.
+    /// Could be moved into a factory method or using dependency containers.
+    /// - Returns: UIViewController for `AddCustomLocations`
     private func makeAddCustomLocationViewController() -> UIViewController {
-        let apiClient = APIClient(baseURL: try! Configuration.value(for: "API_URL"))
+        let apiClient = APIClient(baseURL: Configuration.value(for: .apiURL))
         let repository = LocationsRepository(apiClient: apiClient)
         let useCase = AddCustomLocationUseCase(repository: repository)
         let viewModel = AddCustomLocationViewModel(useCase: useCase)
@@ -85,6 +108,10 @@ class HomeCoordinator: CoordinatorInterface {
 extension HomeCoordinator: HomeViewModelDelegate {
     func didTapAddCustomLocation(sender: HomeViewModel) {
         presentAddCustomLocationView()
+    }
+
+    func didTapLocation(location: LocationDomainModel, sender: HomeViewModel) {
+        deeplinkToWikipedia(location: location)
     }
 }
 

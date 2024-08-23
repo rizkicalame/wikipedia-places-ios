@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct RoundedCorners: ViewModifier {
+
+    // MARK: - Constants
+
+    private enum Style {
+        static let cornerRadius = 16.0
+        static let strokeOpacity = 0.5
+        static let strokeLineWidth = 1.0
+    }
+
+    // MARK: - View
+
     func body(content: Content) -> some View {
         content.overlay(
-            RoundedRectangle(cornerRadius: 10.0)
+            RoundedRectangle(cornerRadius: Style.cornerRadius)
                 .strokeBorder(
-                    Color.gray.opacity(0.5), 
-                    style: StrokeStyle(lineWidth: 1.0)
+                    Color.gray.opacity(Style.strokeOpacity),
+                    style: StrokeStyle(lineWidth: Style.strokeLineWidth)
                 )
         )
     }

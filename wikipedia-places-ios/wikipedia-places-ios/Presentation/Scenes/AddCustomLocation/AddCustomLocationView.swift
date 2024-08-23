@@ -11,42 +11,6 @@ protocol AddCustomLocationViewModelDelegate: AnyObject {
     func didAddCustomLocation(sender: AddCustomLocationViewModel)
 }
 
-final class AddCustomLocationViewModel: ObservableObject {
-
-    // MARK: - Published variables
-
-    @Published var nameOfLocation: String = ""
-    @Published var latitude: String = ""
-    @Published var longitude: String = ""
-
-    // MARK: - Properties
-
-    private let useCase: AddCustomLocationUseCaseInterface
-
-    weak var delegate: AddCustomLocationViewModelDelegate?
-
-    // MARK: - Init
-
-    init(useCase: AddCustomLocationUseCaseInterface) {
-        self.useCase = useCase
-    }
-
-    // MARK: - Internal
-
-    func onSubmitTapped() {
-        addCustomLocation()
-    }
-
-    // MARK: - Private
-
-    private func addCustomLocation() {
-        useCase.addCustomLocation(name: nameOfLocation,
-                                  latitude: latitude,
-                                  longitude: longitude)
-        self.delegate?.didAddCustomLocation(sender: self)
-    }
-}
-
 struct AddCustomLocationView: View {
     @ObservedObject var viewModel: AddCustomLocationViewModel
 
@@ -54,17 +18,17 @@ struct AddCustomLocationView: View {
 
         Form {
             Section {
-                FormInputLabel(title: "Name of location")
-                FormInputField(placeholder: "E.g. Amsterdam", 
+                FormInputLabel(title: viewModel.locationFormTitle)
+                FormInputField(placeholder: viewModel.locationPlaceholder,
                                textBinding: $viewModel.nameOfLocation)
 
-                FormInputLabel(title: "Latitude *")
-                FormInputField(placeholder: "52.00000",
+                FormInputLabel(title: viewModel.latitudeFormTitle)
+                FormInputField(placeholder: viewModel.latitudePlaceholder,
                                textBinding: $viewModel.latitude)
 
 
-                FormInputLabel(title: "Longitude *")
-                FormInputField(placeholder: "14.00000",
+                FormInputLabel(title: viewModel.longitudeFormTitle)
+                FormInputField(placeholder: viewModel.longitudePlaceholder,
                                textBinding: $viewModel.longitude)
             }
 
@@ -72,11 +36,11 @@ struct AddCustomLocationView: View {
                 Button {
                     viewModel.onSubmitTapped()
                 } label: {
-                    Text("Submit")
+                    Text(viewModel.submitButtonTitle)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }
-        .navigationTitle("Add custom location")
+        .navigationTitle(viewModel.navigationTitle)
     }
 }

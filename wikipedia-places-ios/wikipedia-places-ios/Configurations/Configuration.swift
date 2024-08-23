@@ -8,20 +8,24 @@
 import Foundation
 
 enum Configuration {
-    enum Error: Swift.Error {
-        case missingKey, invalidValue
+    enum Keys: String {
+        case apiURL = "API_URL"
     }
 
-    static func value(for key: String) throws -> String {
-        guard let object = Bundle.main.object(forInfoDictionaryKey: key) else {
-            throw Error.missingKey
+    /// Tries to find a specific key in the environment configuration. See the `Configurations` folder
+    /// Will result in fatalErrors if the key was not found or the value was not specified as a string.
+    /// - Parameter key: The key of the value requested.
+    /// - Returns: Value defined in the config.
+    static func value(for key: Keys) -> String {
+        guard let object = Bundle.main.object(forInfoDictionaryKey: key.rawValue) else {
+            fatalError("Tried to find key: \(key) from environment, but not found")
         }
 
         switch object {
         case let value as String:
             return value
         default:
-            throw Error.invalidValue
+            fatalError("Tried to find value for: \(key) from environment, but value was invalid.")
         }
     }
 }

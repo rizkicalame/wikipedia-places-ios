@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeViewModelDelegate: AnyObject {
     func didTapAddCustomLocation(sender: HomeViewModel)
+    func didTapLocation(location: LocationDomainModel, sender: HomeViewModel)
 }
 
 @MainActor
@@ -55,8 +56,7 @@ final class HomeViewModel: ObservableObject {
     }
 
     func onRowTapped(location: LocationDomainModel) {
-        let url = URL(string: "wikipedia://places/?WMFPlacesCoordinates=\(location.latitude),\(location.longitude)")!
-        UIApplication.shared.open(url)
+        delegate?.didTapLocation(location: location, sender: self)
     }
 
     func onAddCustomLocationTapped() {
