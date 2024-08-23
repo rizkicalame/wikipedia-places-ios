@@ -11,6 +11,8 @@ import XCTest
 final class wikipedia_places_iosTests: XCTestCase {
 
     override func setUpWithError() throws {
+
+        let mock = LocationsRepositoryInterfaceMock()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 

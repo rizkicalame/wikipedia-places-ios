@@ -31,6 +31,8 @@
 		3C676CDA2C78BD6C00641261 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD92C78BD6C00641261 /* RoundedCorners.swift */; };
 		3C676CDC2C78BE8C00641261 /* AddCustomLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */; };
 		3C676CDF2C78C19000641261 /* WikipediaDeeplinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */; };
+		3C676CE22C78E85F00641261 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CE02C78E85F00641261 /* AutoMockable.generated.swift */; };
+		3C676CE62C78EC8700641261 /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CE42C78E87000641261 /* AutoMockable.swift */; };
 		3C909C332C76576500D92742 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C322C76576500D92742 /* HomeView.swift */; };
 		3C909C352C76576600D92742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C342C76576600D92742 /* Assets.xcassets */; };
 		3C909C382C76576600D92742 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C372C76576600D92742 /* Preview Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		3C676CD92C78BD6C00641261 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationViewModel.swift; sourceTree = "<group>"; };
 		3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDeeplinkHelper.swift; sourceTree = "<group>"; };
+		3C676CE02C78E85F00641261 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
+		3C676CE42C78E87000641261 /* AutoMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
 		3C909C2D2C76576500D92742 /* wikipedia-places-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wikipedia-places-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C909C322C76576500D92742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3C909C342C76576600D92742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -298,6 +302,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		3C676CE12C78E85F00641261 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				3C676CE02C78E85F00641261 /* AutoMockable.generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		3C676CE32C78E86500641261 /* Sourcery */ = {
+			isa = PBXGroup;
+			children = (
+				3C676CE42C78E87000641261 /* AutoMockable.swift */,
+			);
+			path = Sourcery;
+			sourceTree = "<group>";
+		};
 		3C909C242C76576500D92742 = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +341,7 @@
 		3C909C2F2C76576500D92742 /* wikipedia-places-ios */ = {
 			isa = PBXGroup;
 			children = (
+				3C676CE32C78E86500641261 /* Sourcery */,
 				3C676CDD2C78C18300641261 /* Helpers */,
 				3C676C732C773EDF00641261 /* Info.plist */,
 				3C676C6B2C772FA600641261 /* Configurations */,
@@ -347,6 +368,7 @@
 		3C909C402C76576600D92742 /* wikipedia-places-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				3C676CE12C78E85F00641261 /* Generated */,
 				3C909C412C76576600D92742 /* wikipedia_places_iosTests.swift */,
 			);
 			path = "wikipedia-places-iosTests";
@@ -524,6 +546,7 @@
 				3C676CCC2C77E7A700641261 /* AddCustomLocationView.swift in Sources */,
 				3C676C672C767E3000641261 /* DomainModelInterface.swift in Sources */,
 				3C676C892C77BA6200641261 /* AppDelegate.swift in Sources */,
+				3C676CE62C78EC8700641261 /* AutoMockable.swift in Sources */,
 				3C676C6A2C772E2F00641261 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C909C422C76576600D92742 /* wikipedia_places_iosTests.swift in Sources */,
+				3C676CE22C78E85F00641261 /* AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,52 @@
+{
+  "entries": {
+    "brew": {
+      "sourcery": {
+        "version": "2.2.5",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/sourcery/blobs/sha256:e165bb8f38cae180d1a8ab72536ef975fc86f393e557628774e2b9c95a5631aa",
+              "sha256": "e165bb8f38cae180d1a8ab72536ef975fc86f393e557628774e2b9c95a5631aa"
+            },
+            "arm64_ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/sourcery/blobs/sha256:103a047a9d50f0c1e885519efc6b3da81cf98ff4ec085409ed33849aed0280de",
+              "sha256": "103a047a9d50f0c1e885519efc6b3da81cf98ff4ec085409ed33849aed0280de"
+            },
+            "sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/sourcery/blobs/sha256:291c5eaa8a32e96009ef0f2186f7a694a3e13b39c7ff4f885b9dc0ec0444f8ee",
+              "sha256": "291c5eaa8a32e96009ef0f2186f7a694a3e13b39c7ff4f885b9dc0ec0444f8ee"
+            },
+            "ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/sourcery/blobs/sha256:6cf466dd837f0b74ce5b02d0a0312ef7aacd4819ba995b23c4f72f82d68cc098",
+              "sha256": "6cf466dd837f0b74ce5b02d0a0312ef7aacd4819ba995b23c4f72f82d68cc098"
+            },
+            "x86_64_linux": {
+              "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/sourcery/blobs/sha256:9007a49ae37e68433784b9ce2cff0fbabb7526c114397727935ec8dc2228c36e",
+              "sha256": "9007a49ae37e68433784b9ce2cff0fbabb7526c114397727935ec8dc2228c36e"
+            }
+          }
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.3.17",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "14.3.1.0.1.1683849156",
+        "Xcode": "15.4",
+        "macOS": "14.4.1"
+      }
+    }
+  }
+}
