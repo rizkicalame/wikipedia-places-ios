@@ -12,12 +12,14 @@ final class LocationsRepository: LocationsRepositoryInterface {
     // MARK: - Properties
 
     private let apiClient: APIClientInterface
-    private var customLocations = [LocationDataModel]()
+    private let customLocationsCache: CustomLocationsCacheInterface
 
     // MARK: - Init
 
-    init(apiClient: APIClientInterface) {
+    init(apiClient: APIClientInterface,
+         customLocationsCache: CustomLocationsCacheInterface = CustomLocationsCache.shared) {
         self.apiClient = apiClient
+        self.customLocationsCache = customLocationsCache
     }
 
     // MARK: - LocationsRepositoryInterface
@@ -27,13 +29,20 @@ final class LocationsRepository: LocationsRepositoryInterface {
                                                                                     "/abnamrocoesd/assignment-ios/main/locations.json",
                                                                                  method: .get,
                                                                                  keyPath: "locations")
-        return dataModels.map {
+
+        let remoteLocations = dataModels.map {
             $0.toDomainModel()
         }
+
+        let customLocations = customLocationsCache.inMemoryLocations.map {
+            $0.toDomainModel()
+        }
+
+        return remoteLocations + customLocations
     }
 
     func createCustomLocation(location: LocationDomainModel) {
         let dataModel = location.toDataModel()
-        customLocations.append(dataModel)
+        customLocationsCache.addItems([dataModel])
     }
 }

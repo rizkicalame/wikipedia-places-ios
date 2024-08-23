@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol HomeViewModelDelegate: AnyObject {
+    func didTapAddCustomLocation(sender: HomeViewModel)
+}
+
 @MainActor
 final class HomeViewModel: ObservableObject {
 
@@ -29,6 +33,8 @@ final class HomeViewModel: ObservableObject {
     private let getLocationsUseCase: GetLocationsUseCaseInterface
     private let addCustomLocationUseCase: AddCustomLocationUseCase
 
+    weak var delegate: HomeViewModelDelegate?
+
     // MARK: - Init
 
     init(getLocationsUseCase: GetLocationsUseCaseInterface,
@@ -39,7 +45,7 @@ final class HomeViewModel: ObservableObject {
 
     // MARK: - Internal
 
-    func fetchLocations() async {
+    func refreshLocations() async {
         do {
             let locations = try await getLocationsUseCase.getLocations()
             handleLocations(locations)
@@ -51,6 +57,10 @@ final class HomeViewModel: ObservableObject {
     func onRowTapped(location: LocationDomainModel) {
         let url = URL(string: "wikipedia://places/?WMFPlacesCoordinates=\(location.latitude),\(location.longitude)")!
         UIApplication.shared.open(url)
+    }
+
+    func onAddCustomLocationTapped() {
+        delegate?.didTapAddCustomLocation(sender: self)
     }
 
     // MARK: - Private

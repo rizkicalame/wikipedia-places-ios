@@ -12,7 +12,7 @@ struct HomeView: View {
     // MARK: - Constants
 
     enum Constants {
-        static let listPadding = EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+
     }
 
     // MARK: - ViewModel
@@ -28,20 +28,23 @@ struct HomeView: View {
     // MARK: - View
 
     var body: some View {
-        switch viewModel.state {
-        case .loading:
-            loadingView()
-        case .error(let error):
-            errorView(error: error)
-        case .loaded:
-            loadedView()
+        Group {
+            switch viewModel.state {
+            case .loading:
+                loadingView()
+            case .error(let error):
+                errorView(error: error)
+            case .loaded:
+                loadedView()
+            }
         }
+        .navigationTitle("Locations")
     }
 
     func loadingView() -> some View {
         ProgressView()
             .task {
-                await self.viewModel.fetchLocations()
+                await self.viewModel.refreshLocations()
             }
     }
 
@@ -58,16 +61,15 @@ struct HomeView: View {
 
             Section {
                 Button {
-
+                    self.viewModel.onAddCustomLocationTapped()
                 } label: {
                     Text("Add custom location")
                 }
 
             }
         }
-        .padding(Constants.listPadding)
         .refreshable {
-            await self.viewModel.fetchLocations()
+            await self.viewModel.refreshLocations()
         }
     }
 

@@ -19,7 +19,16 @@
 		3C676C792C7747F100641261 /* LocationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C782C7747F100641261 /* LocationsRepository.swift */; };
 		3C676C7D2C77B4EF00641261 /* AddCustomLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C7C2C77B4EF00641261 /* AddCustomLocationUseCase.swift */; };
 		3C676C822C77B88300641261 /* LocationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C812C77B88300641261 /* LocationCellView.swift */; };
-		3C909C312C76576500D92742 /* wikipedia_places_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */; };
+		3C676C852C77B9B800641261 /* CoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C842C77B9B800641261 /* CoordinatorInterface.swift */; };
+		3C676C872C77B9E700641261 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C862C77B9E700641261 /* HomeCoordinator.swift */; };
+		3C676C892C77BA6200641261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C882C77BA6200641261 /* AppDelegate.swift */; };
+		3C676C8B2C77E22F00641261 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C8A2C77E22F00641261 /* SceneDelegate.swift */; };
+		3C676CCC2C77E7A700641261 /* AddCustomLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CCB2C77E7A700641261 /* AddCustomLocationView.swift */; };
+		3C676CCE2C78984E00641261 /* CustomLocationsCacheInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CCD2C78984E00641261 /* CustomLocationsCacheInterface.swift */; };
+		3C676CD02C78985700641261 /* CustomLocationsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CCF2C78985700641261 /* CustomLocationsCache.swift */; };
+		3C676CD52C78BAF600641261 /* FormInputLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD42C78BAF600641261 /* FormInputLabel.swift */; };
+		3C676CD72C78BB9500641261 /* FormInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD62C78BB9500641261 /* FormInputField.swift */; };
+		3C676CDA2C78BD6C00641261 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD92C78BD6C00641261 /* RoundedCorners.swift */; };
 		3C909C332C76576500D92742 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C322C76576500D92742 /* HomeView.swift */; };
 		3C909C352C76576600D92742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C342C76576600D92742 /* Assets.xcassets */; };
 		3C909C382C76576600D92742 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C372C76576600D92742 /* Preview Assets.xcassets */; };
@@ -61,8 +70,17 @@
 		3C676C782C7747F100641261 /* LocationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsRepository.swift; sourceTree = "<group>"; };
 		3C676C7C2C77B4EF00641261 /* AddCustomLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationUseCase.swift; sourceTree = "<group>"; };
 		3C676C812C77B88300641261 /* LocationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellView.swift; sourceTree = "<group>"; };
+		3C676C842C77B9B800641261 /* CoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorInterface.swift; sourceTree = "<group>"; };
+		3C676C862C77B9E700641261 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		3C676C882C77BA6200641261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3C676C8A2C77E22F00641261 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3C676CCB2C77E7A700641261 /* AddCustomLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationView.swift; sourceTree = "<group>"; };
+		3C676CCD2C78984E00641261 /* CustomLocationsCacheInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocationsCacheInterface.swift; sourceTree = "<group>"; };
+		3C676CCF2C78985700641261 /* CustomLocationsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocationsCache.swift; sourceTree = "<group>"; };
+		3C676CD42C78BAF600641261 /* FormInputLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputLabel.swift; sourceTree = "<group>"; };
+		3C676CD62C78BB9500641261 /* FormInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputField.swift; sourceTree = "<group>"; };
+		3C676CD92C78BD6C00641261 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		3C909C2D2C76576500D92742 /* wikipedia-places-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wikipedia-places-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wikipedia_places_iosApp.swift; sourceTree = "<group>"; };
 		3C909C322C76576500D92742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3C909C342C76576600D92742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C909C372C76576600D92742 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -110,8 +128,8 @@
 		3C676C542C767A2700641261 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3C676C832C77B9AB00641261 /* Coordinators */,
 				3C676C7A2C776DD500641261 /* Views */,
-				3C909C5E2C76640E00D92742 /* App */,
 				3C909C5D2C7663FB00D92742 /* Scenes */,
 			);
 			path = Presentation;
@@ -166,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				3C676C782C7747F100641261 /* LocationsRepository.swift */,
+				3C676CCF2C78985700641261 /* CustomLocationsCache.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -182,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				3C676C632C767DB800641261 /* DataModelInterface.swift */,
+				3C676CCD2C78984E00641261 /* CustomLocationsCacheInterface.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -216,6 +236,8 @@
 		3C676C7A2C776DD500641261 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3C676CD82C78BCF300641261 /* ViewModifiers */,
+				3C676CD12C78BAD200641261 /* Form */,
 				3C676C7B2C776DD900641261 /* List */,
 			);
 			path = Views;
@@ -227,6 +249,40 @@
 				3C676C812C77B88300641261 /* LocationCellView.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		3C676C832C77B9AB00641261 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				3C676C842C77B9B800641261 /* CoordinatorInterface.swift */,
+				3C676C862C77B9E700641261 /* HomeCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		3C676CC82C77E78A00641261 /* AddCustomLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3C676CCB2C77E7A700641261 /* AddCustomLocationView.swift */,
+			);
+			path = AddCustomLocation;
+			sourceTree = "<group>";
+		};
+		3C676CD12C78BAD200641261 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				3C676CD42C78BAF600641261 /* FormInputLabel.swift */,
+				3C676CD62C78BB9500641261 /* FormInputField.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		3C676CD82C78BCF300641261 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				3C676CD92C78BD6C00641261 /* RoundedCorners.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		3C909C242C76576500D92742 = {
@@ -260,6 +316,8 @@
 				3C676C542C767A2700641261 /* Presentation */,
 				3C909C342C76576600D92742 /* Assets.xcassets */,
 				3C909C362C76576600D92742 /* Preview Content */,
+				3C676C882C77BA6200641261 /* AppDelegate.swift */,
+				3C676C8A2C77E22F00641261 /* SceneDelegate.swift */,
 			);
 			path = "wikipedia-places-ios";
 			sourceTree = "<group>";
@@ -292,17 +350,10 @@
 		3C909C5D2C7663FB00D92742 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3C676CC82C77E78A00641261 /* AddCustomLocation */,
 				3C676C512C7678B500641261 /* Home */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		3C909C5E2C76640E00D92742 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				3C909C302C76576500D92742 /* wikipedia_places_iosApp.swift */,
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,19 +486,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C676CDA2C78BD6C00641261 /* RoundedCorners.swift in Sources */,
 				3C676C612C767AF700641261 /* LocationDataModel.swift in Sources */,
+				3C676CCE2C78984E00641261 /* CustomLocationsCacheInterface.swift in Sources */,
 				3C676C5F2C767AEB00641261 /* LocationDomainModel.swift in Sources */,
+				3C676C852C77B9B800641261 /* CoordinatorInterface.swift in Sources */,
 				3C909C332C76576500D92742 /* HomeView.swift in Sources */,
+				3C676CD52C78BAF600641261 /* FormInputLabel.swift in Sources */,
 				3C676C772C77472400641261 /* LocationsRepositoryInterface.swift in Sources */,
 				3C676C792C7747F100641261 /* LocationsRepository.swift in Sources */,
+				3C676CD02C78985700641261 /* CustomLocationsCache.swift in Sources */,
+				3C676CD72C78BB9500641261 /* FormInputField.swift in Sources */,
 				3C676C822C77B88300641261 /* LocationCellView.swift in Sources */,
 				3C676C5C2C767A8400641261 /* GetLocationsUseCase.swift in Sources */,
 				3C676C7D2C77B4EF00641261 /* AddCustomLocationUseCase.swift in Sources */,
 				3C676C532C7678C200641261 /* HomeViewModel.swift in Sources */,
 				3C676C642C767DB800641261 /* DataModelInterface.swift in Sources */,
+				3C676C8B2C77E22F00641261 /* SceneDelegate.swift in Sources */,
 				3C676C752C773F4F00641261 /* Configuration.swift in Sources */,
-				3C909C312C76576500D92742 /* wikipedia_places_iosApp.swift in Sources */,
+				3C676C872C77B9E700641261 /* HomeCoordinator.swift in Sources */,
+				3C676CCC2C77E7A700641261 /* AddCustomLocationView.swift in Sources */,
 				3C676C672C767E3000641261 /* DomainModelInterface.swift in Sources */,
+				3C676C892C77BA6200641261 /* AppDelegate.swift in Sources */,
 				3C676C6A2C772E2F00641261 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,7 +677,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "wikipedia-places-ios/Info.plist";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -646,7 +705,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "wikipedia-places-ios/Info.plist";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

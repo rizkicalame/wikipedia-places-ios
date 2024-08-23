@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddCustomLocationUseCaseInterface {
-    func addCustomLocation(name: String?, latitude: Double, longitude: Double)
+    func addCustomLocation(name: String?, latitude: String, longitude: String)
 }
 
 class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
@@ -25,7 +25,12 @@ class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
 
     // MARK: - AddCustomLocationUseCaseInterface
 
-    func addCustomLocation(name: String?, latitude: Double, longitude: Double) {
+    func addCustomLocation(name: String?, latitude: String, longitude: String) {
+        guard let latitude = Double(latitude), let longitude = Double(longitude) else {
+            return
+        }
+
+        // TODO: Formatting and validation
         let model = LocationDomainModel(name: name, latitude: latitude, longitude: longitude)
         repository.createCustomLocation(location: model)
     }

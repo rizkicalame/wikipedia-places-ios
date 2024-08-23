@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct LocationCellView: View {
+
+    // MARK: - Properties
+
     let name: String
     let coordinates: String
     let onTap: (() -> Void)
+
+    // MARK: - View
 
     var body: some View {
         Button(action: {
