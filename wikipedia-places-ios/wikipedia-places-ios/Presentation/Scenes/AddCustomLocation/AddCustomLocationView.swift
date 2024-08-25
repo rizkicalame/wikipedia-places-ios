@@ -30,7 +30,13 @@ struct AddCustomLocationView: View {
                 FormInputLabel(title: viewModel.longitudeFormTitle)
                 FormInputField(placeholder: viewModel.longitudePlaceholder,
                                textBinding: $viewModel.longitude)
+
+                if viewModel.shouldDisplayErrorMessage {
+                    Text(viewModel.errorText)
+                        .foregroundStyle(.red)
+                }
             }
+
 
             Section {
                 Button {

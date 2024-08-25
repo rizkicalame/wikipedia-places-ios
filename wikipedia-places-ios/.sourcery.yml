@@ -2,4 +2,4 @@ sources:
     - wikipedia-places-ios
 templates:
     - wikipedia-places-iosTests/Templates
-output: wikipedia-places-iosTests/Generated
+output: wikipedia-places-iosTests/Mocks/MockObjects.generated.swift

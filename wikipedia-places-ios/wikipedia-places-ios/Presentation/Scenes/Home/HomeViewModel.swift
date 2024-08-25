@@ -32,16 +32,13 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Properties
 
     private let getLocationsUseCase: GetLocationsUseCaseInterface
-    private let addCustomLocationUseCase: AddCustomLocationUseCase
 
     weak var delegate: HomeViewModelDelegate?
 
     // MARK: - Init
 
-    init(getLocationsUseCase: GetLocationsUseCaseInterface,
-         addCustomLocationUseCase: AddCustomLocationUseCase) {
+    init(getLocationsUseCase: GetLocationsUseCaseInterface) {
         self.getLocationsUseCase = getLocationsUseCase
-        self.addCustomLocationUseCase = addCustomLocationUseCase
     }
 
     // MARK: - Internal

@@ -9,7 +9,7 @@ import Foundation
 
 protocol CustomLocationsCacheInterface {
     static var shared: CustomLocationsCacheInterface { get }
-    var inMemoryLocations: [LocationDataModel] { get set }
+    var inMemoryLocations: [LocationDataModel] { get }
 
     func addItems(_ items: [LocationDataModel])
     func clearCache()

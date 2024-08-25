@@ -41,7 +41,7 @@ Furthermore I'm a big supporter of "composition over inheritance" and to enforce
 - [] Unit tests
 - [] Accessibility
 - [] (Sample) UI tests
-- [] Sourcery
+- [x] Sourcery
 
 ## Who to talk to
 - Rizki Calame

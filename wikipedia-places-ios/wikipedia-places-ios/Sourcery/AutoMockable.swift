@@ -6,5 +6,15 @@
 //
 
 // sourcery:begin: AutoMockable
+
+// Repositories
 extension LocationsRepositoryInterface {}
+
+// UseCases
+extension GetLocationsUseCaseInterface {}
+extension AddCustomLocationUseCaseInterface {}
+
+// Delegates
+extension HomeViewModelDelegate {}
+
 // sourcery:end

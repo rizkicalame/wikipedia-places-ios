@@ -28,6 +28,7 @@ final class APIClient: APIClientInterface {
     enum APIError: Error {
         case invalidURL
         case invalidResponse
+        case invalidKeyPathSpecified
         case decodingFailed(Error)
     }
 
@@ -122,8 +123,7 @@ final class APIClient: APIClientInterface {
 
                 // Find the object using the keyPath
                 guard let keyObject = (json as AnyObject).value(forKeyPath: keyPath) else {
-                    let error = NSError(domain: "InvalidDecodingKeyPathSpecified", code: -1, userInfo: nil)
-                    throw APIError.decodingFailed(error)
+                    throw APIError.invalidKeyPathSpecified
                 }
 
                 // Decode the key object

@@ -8,10 +8,16 @@
 import Foundation
 
 protocol AddCustomLocationUseCaseInterface {
-    func addCustomLocation(name: String?, latitude: String, longitude: String)
+    func addCustomLocation(name: String?, latitude: String, longitude: String) throws
 }
 
-class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
+final class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
+
+    // MARK: - ValidationError
+    enum ValidationErrors: Error {
+        case invalidLatitudeProvided
+        case invalidLongitudeProvided
+    }
 
     // MARK: - Properties
 
@@ -25,12 +31,15 @@ class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
 
     // MARK: - AddCustomLocationUseCaseInterface
 
-    func addCustomLocation(name: String?, latitude: String, longitude: String) {
-        guard let latitude = Double(latitude), let longitude = Double(longitude) else {
-            return
+    func addCustomLocation(name: String?, latitude: String, longitude: String) throws {
+        guard let latitude = Double(latitude) else {
+            throw(ValidationErrors.invalidLatitudeProvided)
         }
 
-        // TODO: Formatting and validation
+        guard let longitude = Double(longitude) else {
+            throw(ValidationErrors.invalidLongitudeProvided)
+        }
+
         let model = LocationDomainModel(name: name, latitude: latitude, longitude: longitude)
         repository.createCustomLocation(location: model)
     }

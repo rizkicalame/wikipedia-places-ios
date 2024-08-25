@@ -9,11 +9,40 @@ import Foundation
 
 final class AddCustomLocationViewModel: ObservableObject {
 
+    // MARK: - State
+
+    enum State: Equatable {
+        case unknownError
+        case error(AddCustomLocationUseCase.ValidationErrors)
+        case idle
+    }
+
     // MARK: - Published variables
 
     @Published var nameOfLocation: String = ""
     @Published var latitude: String = ""
     @Published var longitude: String = ""
+    @Published var state: State = .idle
+
+    // MARK: - Computed
+
+    var errorText: String {
+        switch state {
+        case .unknownError:
+            return "An unknown error has occurred."
+        case .error(let validationErrors):
+            switch validationErrors {
+            case .invalidLatitudeProvided: return "Please provide a valid latitude."
+            case .invalidLongitudeProvided: return "Please provide a valid longitude."
+            }
+        case .idle:
+            return ""
+        }
+    }
+
+    var shouldDisplayErrorMessage: Bool {
+        return state != .idle
+    }
 
     // MARK: - Properties
 
@@ -36,10 +65,18 @@ final class AddCustomLocationViewModel: ObservableObject {
     // MARK: - Private
 
     private func addCustomLocation() {
-        useCase.addCustomLocation(name: nameOfLocation,
-                                  latitude: latitude,
-                                  longitude: longitude)
-        self.delegate?.didAddCustomLocation(sender: self)
+        do {
+            try useCase.addCustomLocation(name: nameOfLocation,
+                                      latitude: latitude,
+                                      longitude: longitude)
+            self.delegate?.didAddCustomLocation(sender: self)
+        } catch {
+            guard let error = error as? AddCustomLocationUseCase.ValidationErrors else {
+                return state = .unknownError
+            }
+
+            state = .error(error)
+        }
     }
 }
 

@@ -67,9 +67,7 @@ class HomeCoordinator: CoordinatorInterface {
         let apiClient = APIClient(baseURL: Configuration.value(for: .apiURL))
         let repository = LocationsRepository(apiClient: apiClient)
         let getLocationsUseCase = GetLocationsUseCase(repository: repository)
-        let addCustomLocationUseCase = AddCustomLocationUseCase(repository: repository)
-        homeViewModel = HomeViewModel(getLocationsUseCase: getLocationsUseCase,
-                                      addCustomLocationUseCase: addCustomLocationUseCase)
+        homeViewModel = HomeViewModel(getLocationsUseCase: getLocationsUseCase)
         homeViewModel?.delegate = self
         let view = HomeView(viewModel: homeViewModel!)
         return UIHostingController(rootView: view)
