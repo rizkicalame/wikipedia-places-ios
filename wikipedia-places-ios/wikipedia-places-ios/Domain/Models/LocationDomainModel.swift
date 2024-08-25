@@ -26,7 +26,7 @@ struct LocationDomainModel: DomainModelInterface, Identifiable {
     }
 
     var presentedCoordinates: String {
-        "\(latitude ), \(longitude)"
+        "\(latitude), \(longitude)"
     }
 
     // MARK: - DomainModelInterface

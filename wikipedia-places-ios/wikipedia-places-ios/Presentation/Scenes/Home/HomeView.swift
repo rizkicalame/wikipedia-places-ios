@@ -52,10 +52,13 @@ struct HomeView: View {
         List {
             Section {
                 ForEach(self.viewModel.locations, id: \.id) { location in
-                    LocationCellView(name: location.presentedName, 
-                                     coordinates: location.presentedCoordinates) {
-                        self.viewModel.onRowTapped(location: location)
+                    LocationCellView(name: location.presentedName,
+                                     coordinates: location.presentedCoordinates) { self.viewModel.onRowTapped(location: location)
                     }
+                                     .accessibilityElement(children: .ignore)
+                                     .accessibilityLabel(viewModel.accessibilityLabel(for: location))
+                                     .accessibilityAddTraits(.isButton)
+                                     .accessibilityHint(viewModel.accessibilityHint(for: location))
                 }
             }
 
@@ -65,6 +68,10 @@ struct HomeView: View {
                 } label: {
                     Text(viewModel.addCustomLocationButtonTitle)
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(viewModel.accessibilityLabelAddCustomLocationButton)
+                .accessibilityAddTraits(.isButton)
+                .accessibilityHint(viewModel.accessibilityHintAddCustomLocationButton)
 
             }
         }
