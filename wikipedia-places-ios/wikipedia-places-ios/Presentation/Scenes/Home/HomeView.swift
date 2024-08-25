@@ -32,13 +32,13 @@ struct HomeView: View {
             switch viewModel.state {
             case .loading:
                 loadingView()
-            case .error(let error):
-                errorView(error: error)
+            case .error:
+                errorView()
             case .loaded:
                 loadedView()
             }
         }
-        .navigationTitle("Locations")
+        .navigationTitle(viewModel.navigationTitle)
     }
 
     func loadingView() -> some View {
@@ -63,7 +63,7 @@ struct HomeView: View {
                 Button {
                     self.viewModel.onAddCustomLocationTapped()
                 } label: {
-                    Text("Add custom location")
+                    Text(viewModel.addCustomLocationButtonTitle)
                 }
 
             }
@@ -73,11 +73,7 @@ struct HomeView: View {
         }
     }
 
-    func errorView(error: Error) -> some View {
-        Text("Error: \(error)")
+    func errorView() -> some View {
+        Text(viewModel.errorText)
     }
 }
-//
-//#Preview {
-//    HomeView(viewModel: HomeViewModel(getLocationsUseCase: GetLocationsUseCase(repository: LocationsRepository(apiClient: APIClient(baseURL: ""))), addCustomLocationUseCase: AddCustomLocationUseCase(repository: LocationsRepository(apiClient: APIClient(baseURL: "")))))
-//}

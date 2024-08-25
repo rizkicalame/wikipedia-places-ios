@@ -71,4 +71,27 @@ final class HomeViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(mockDelegate.didTapAddCustomLocationSenderCalled)
     }
+
+    @MainActor
+    func testShouldHaveCorrectStaticTexts() {
+        XCTAssertEqual(sut.navigationTitle, "Locations")
+        XCTAssertEqual(sut.addCustomLocationButtonTitle, "Add custom location")
+    }
+
+    @MainActor
+    func testShouldReturnErrorTexts() {
+        // Given
+        let error = AddCustomLocationUseCase.ValidationErrors.invalidLatitudeProvided
+        useCaseMock.getLocationsThrowableError = error
+
+        Task {
+            await self.sut.refreshLocations()
+
+            // When
+            let text = sut.errorText
+
+            // Then
+            XCTAssertFalse(text.isEmpty)
+        }
+    }
 }

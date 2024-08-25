@@ -38,7 +38,7 @@ Furthermore I'm a big supporter of "composition over inheritance" and to enforce
 - [x] Displaying locations
 - [x] Custom locations
 - [x] Deeplinking into the Wikipedia app
-- [] Unit tests
+- [x] Unit tests
 - [] Accessibility
 - [] (Sample) UI tests
 - [x] Sourcery

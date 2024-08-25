@@ -16,6 +16,9 @@
 		3C3133032C7BADA6004EAA95 /* CustomLocationsCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3133022C7BADA6004EAA95 /* CustomLocationsCacheTests.swift */; };
 		3C3133062C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift */; };
 		3C31330B2C7BB25C004EAA95 /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31330A2C7BB25C004EAA95 /* HomeCoordinatorTests.swift */; };
+		3C31330D2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31330C2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift */; };
+		3C31330F2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31330E2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift */; };
+		3C3133112C7BBF6B004EAA95 /* AddCustomLocationViewModel+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3133102C7BBF6B004EAA95 /* AddCustomLocationViewModel+Localization.swift */; };
 		3C676C532C7678C200641261 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C522C7678C100641261 /* HomeViewModel.swift */; };
 		3C676C5C2C767A8400641261 /* GetLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C5B2C767A8400641261 /* GetLocationsUseCase.swift */; };
 		3C676C5F2C767AEB00641261 /* LocationDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676C5E2C767AEB00641261 /* LocationDomainModel.swift */; };
@@ -76,6 +79,9 @@
 		3C3133022C7BADA6004EAA95 /* CustomLocationsCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocationsCacheTests.swift; sourceTree = "<group>"; };
 		3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDeeplinkHelperTests.swift; sourceTree = "<group>"; };
 		3C31330A2C7BB25C004EAA95 /* HomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorTests.swift; sourceTree = "<group>"; };
+		3C31330C2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+Localization.swift"; sourceTree = "<group>"; };
+		3C31330E2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+Accessibility.swift"; sourceTree = "<group>"; };
+		3C3133102C7BBF6B004EAA95 /* AddCustomLocationViewModel+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddCustomLocationViewModel+Localization.swift"; sourceTree = "<group>"; };
 		3C676C522C7678C100641261 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3C676C5B2C767A8400641261 /* GetLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsUseCase.swift; sourceTree = "<group>"; };
 		3C676C5E2C767AEB00641261 /* LocationDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDomainModel.swift; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 			children = (
 				3C909C322C76576500D92742 /* HomeView.swift */,
 				3C676C522C7678C100641261 /* HomeViewModel.swift */,
+				3C31330C2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift */,
+				3C31330E2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -342,6 +350,7 @@
 			children = (
 				3C676CCB2C77E7A700641261 /* AddCustomLocationView.swift */,
 				3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */,
+				3C3133102C7BBF6B004EAA95 /* AddCustomLocationViewModel+Localization.swift */,
 			);
 			path = AddCustomLocation;
 			sourceTree = "<group>";
@@ -602,6 +611,7 @@
 				3C909C332C76576500D92742 /* HomeView.swift in Sources */,
 				3C676CD52C78BAF600641261 /* FormInputLabel.swift in Sources */,
 				3C676C772C77472400641261 /* LocationsRepositoryInterface.swift in Sources */,
+				3C31330F2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift in Sources */,
 				3C676CDC2C78BE8C00641261 /* AddCustomLocationViewModel.swift in Sources */,
 				3C676CDF2C78C19000641261 /* WikipediaDeeplinkHelper.swift in Sources */,
 				3C676C792C7747F100641261 /* LocationsRepository.swift in Sources */,
@@ -613,6 +623,7 @@
 				3C676C532C7678C200641261 /* HomeViewModel.swift in Sources */,
 				3C676C642C767DB800641261 /* DataModelInterface.swift in Sources */,
 				3C676C8B2C77E22F00641261 /* SceneDelegate.swift in Sources */,
+				3C31330D2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift in Sources */,
 				3C676C752C773F4F00641261 /* Configuration.swift in Sources */,
 				3C676C872C77B9E700641261 /* HomeCoordinator.swift in Sources */,
 				3C676CCC2C77E7A700641261 /* AddCustomLocationView.swift in Sources */,
@@ -620,6 +631,7 @@
 				3C676C892C77BA6200641261 /* AppDelegate.swift in Sources */,
 				3C676CE62C78EC8700641261 /* AutoMockable.swift in Sources */,
 				3C676C6A2C772E2F00641261 /* APIClient.swift in Sources */,
+				3C3133112C7BBF6B004EAA95 /* AddCustomLocationViewModel+Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
