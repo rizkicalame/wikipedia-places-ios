@@ -18,6 +18,7 @@ final class AddCustomLocationViewModelTests: XCTestCase {
 
     // MARK: - XCTestCase
     override func setUp() {
+        super.setUp()
         useCaseMock = AddCustomLocationUseCaseInterfaceMock()
         sut = AddCustomLocationViewModel(useCase: useCaseMock)
     }
@@ -42,5 +43,51 @@ final class AddCustomLocationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.longitudePlaceholder,"14.0000")
         XCTAssertEqual(sut.submitButtonTitle,"Submit")
         XCTAssertEqual(sut.navigationTitle,"Add custom location")
+    }
+
+    func testShouldNotShowErrorAndTextsWhenIdle() {
+        // Given
+        // When
+        let errorText = sut.errorText
+        let shouldDisplayErrorMessage = sut.shouldDisplayErrorMessage
+
+        // Then
+        XCTAssertTrue(errorText.isEmpty)
+        XCTAssertFalse(shouldDisplayErrorMessage)
+    }
+
+    func testShouldShowErrorWhenInvalidLatitudeProvided() {
+        // Given
+        useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = AddCustomLocationUseCase.ValidationErrors.invalidLatitudeProvided
+
+        // When
+        sut.onSubmitTapped()
+
+        // Then
+        XCTAssertTrue(sut.shouldDisplayErrorMessage)
+        XCTAssertEqual(sut.errorText, "Please provide a valid latitude.")
+    }
+
+    func testShouldShowErrorWhenInvalidLongitudeProvided() {
+        // Given
+        useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = AddCustomLocationUseCase.ValidationErrors.invalidLongitudeProvided
+
+        // When
+        sut.onSubmitTapped()
+
+        // Then
+        XCTAssertTrue(sut.shouldDisplayErrorMessage)
+        XCTAssertEqual(sut.errorText, "Please provide a valid longitude.")
+    }
+
+    func testShouldShowErrorWhenUnknownErrorOccurred() {
+        // Given
+        useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = APIClient.APIError.invalidKeyPathSpecified
+        // When
+        sut.onSubmitTapped()
+
+        // Then
+        XCTAssertTrue(sut.shouldDisplayErrorMessage)
+        XCTAssertEqual(sut.errorText, "An unknown error has occurred.")
     }
 }

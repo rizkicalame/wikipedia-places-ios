@@ -15,6 +15,8 @@ final class AddCustomLocationUseCaseTests: XCTestCase {
     var repositoryMock: LocationsRepositoryInterfaceMock!
 
     override func setUp() {
+        super.setUp()
+        
         self.repositoryMock = LocationsRepositoryInterfaceMock()
         self.sut = AddCustomLocationUseCase(repository: repositoryMock)
     }

@@ -20,6 +20,7 @@ final class HomeViewModelTests: XCTestCase {
 
     @MainActor
     override func setUp() {
+        super.setUp()
         useCaseMock = GetLocationsUseCaseInterfaceMock()
         sut = HomeViewModel(getLocationsUseCase: useCaseMock)
     }
@@ -61,7 +62,6 @@ final class HomeViewModelTests: XCTestCase {
     @MainActor
     func testShouldInformDelegateOfCustomLocationTap() {
         // Given
-        let domainModel = LocationDomainModel(name: "Name", latitude: 1.000, longitude: 2.000)
         let mockDelegate = HomeViewModelDelegateMock()
         sut.delegate = mockDelegate
 

@@ -19,6 +19,7 @@ final class GetLocationsUseCaseTests: XCTestCase {
     // MARK: - XCTestCase
 
     override func setUp() {
+        super.setUp()
         self.repositoryMock = LocationsRepositoryInterfaceMock()
         self.sut = GetLocationsUseCase(repository: repositoryMock)
     }

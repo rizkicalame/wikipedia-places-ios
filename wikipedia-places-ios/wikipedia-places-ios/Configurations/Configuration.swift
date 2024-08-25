@@ -14,6 +14,7 @@ enum Configuration {
 
     /// Tries to find a specific key in the environment configuration. See the `Configurations` folder
     /// Will result in fatalErrors if the key was not found or the value was not specified as a string.
+    /// fatalErrors as an accepted result since bootstrapping the app with an unspecified apiURL should notify the developer immediately.
     /// - Parameter key: The key of the value requested.
     /// - Returns: Value defined in the config.
     static func value(for key: Keys) -> String {
