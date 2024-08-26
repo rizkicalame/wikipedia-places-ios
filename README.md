@@ -15,7 +15,7 @@ Running this project requires: nothing. The `Wikipedia` app uses Swift Package M
 Selecting the `wikipedia-places-ios` scheme runs the own created application, whereas the `Wikipedia` scheme runs the original Wikipedia iOS app.
 
 **Showcasing the deeplinking functionality**
-Prior to running the `wikipedia-places-ios` app and trying the deeplinkg features out, please run the `Wikipedia` first to ensure the simulator has the adjusted version to allow deeplinking using coordinates. Afterwhich, feel free to run the `wikipedia-places-ios` app and test the functionality out.
+Prior to running the `wikipedia-places-ios` app and trying the deeplinkg features out, please run the `Wikipedia` scheme first to ensure the simulator has the adjusted version to allow deeplinking using coordinates. Afterwhich, feel free to run the `wikipedia-places-ios` scheme and test the functionality out.
 
 1. You are able to use the remotely retrieved data including Amsterdam, Mumbai, Copenhagen and a non-defined location;
 2. You also have the possibility to add a custom location using a name (optional), & latlong combination to save the custom location and use that instead.
