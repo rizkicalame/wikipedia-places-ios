@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Interface for cache implementations for custom locations.
 protocol CustomLocationsCacheInterface {
     static var shared: CustomLocationsCacheInterface { get }
     var inMemoryLocations: [LocationDataModel] { get }

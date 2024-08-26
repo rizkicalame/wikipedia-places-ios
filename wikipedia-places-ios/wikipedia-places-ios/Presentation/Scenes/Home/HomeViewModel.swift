@@ -43,6 +43,7 @@ final class HomeViewModel: ObservableObject {
 
     // MARK: - Internal
 
+    /// Refreshes the locations
     func refreshLocations() async {
         do {
             let locations = try await getLocationsUseCase.getLocations()

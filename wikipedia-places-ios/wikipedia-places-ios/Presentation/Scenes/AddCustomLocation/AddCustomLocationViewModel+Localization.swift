@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: Localization
+// MARK: - Localization
 /// Localization extension so that the ViewModel can hold texts and becomes testable.
 extension AddCustomLocationViewModel {
 

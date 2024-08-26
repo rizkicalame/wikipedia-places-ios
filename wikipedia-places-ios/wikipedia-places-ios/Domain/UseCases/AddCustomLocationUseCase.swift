@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Interface for this use case implementations.
 protocol AddCustomLocationUseCaseInterface {
     func addCustomLocation(name: String?, latitude: String, longitude: String) throws
 }
@@ -14,6 +15,7 @@ protocol AddCustomLocationUseCaseInterface {
 final class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
 
     // MARK: - ValidationError
+
     enum ValidationErrors: Error {
         case invalidLatitudeProvided
         case invalidLongitudeProvided
@@ -30,7 +32,12 @@ final class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
     }
 
     // MARK: - AddCustomLocationUseCaseInterface
-
+    
+    /// Adds a custom location based on name and coordinates
+    /// - Parameters:
+    ///   - name: The name of the location. Optional.
+    ///   - latitude: The latitude of the location. Should be a string castable to a Double, otherwise throws an error.
+    ///   - longitude: The longitude of the location. Should be a string castable to a Double, otherwise throws an error.
     func addCustomLocation(name: String?, latitude: String, longitude: String) throws {
         guard let latitude = Double(latitude) else {
             throw(ValidationErrors.invalidLatitudeProvided)

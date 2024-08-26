@@ -17,6 +17,10 @@ enum WikipediaDeeplinkHelper {
 
     // MARK: - Static
 
+
+    /// Constructs the deeplinking URL specifically for the Wikipedia app.
+    /// - Parameter location: Takes the domainModel for Location.
+    /// - Returns: A string presentation of the deeplinking URL to the Wikipedia app.
     static func getCoordinatesDeeplinkURL(location: LocationDomainModel) -> String {
         return "\(Self.appHostScheme)\(Self.placesIntent)/?\(Self.coordinatesQueryParameter)=\(location.latitude),\(location.longitude)"
     }

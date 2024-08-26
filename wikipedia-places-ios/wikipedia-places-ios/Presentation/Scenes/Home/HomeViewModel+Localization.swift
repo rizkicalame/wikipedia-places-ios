@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Localization
-
+/// Localization extension so that the ViewModel can hold texts and becomes testable.
 extension HomeViewModel {
     var navigationTitle: String {
         "Locations"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationDataModel: DataModelInterface, Decodable {
+struct LocationDataModel: Decodable {
 
     // MARK: - Coding keys
 
@@ -24,7 +24,7 @@ struct LocationDataModel: DataModelInterface, Decodable {
     let longitude: Double
 }
 
-extension LocationDataModel {
+extension LocationDataModel: DataModelInterface {
     func toDomainModel() -> LocationDomainModel {
         LocationDomainModel(name: name,
                             latitude: latitude,

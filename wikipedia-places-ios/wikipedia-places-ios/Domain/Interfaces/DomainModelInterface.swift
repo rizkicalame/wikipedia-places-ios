@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Interface for domain model implementations.
 protocol DomainModelInterface {
     associatedtype DataModelType: DataModelInterface
 

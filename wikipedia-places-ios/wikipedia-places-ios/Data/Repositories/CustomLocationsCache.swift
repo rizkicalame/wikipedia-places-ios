@@ -13,26 +13,25 @@ final class CustomLocationsCache: CustomLocationsCacheInterface {
 
     static var shared: CustomLocationsCacheInterface = CustomLocationsCache()
 
-    // MARK: - LocationsCacheInterface
-
-    var inMemoryLocations: [LocationDataModel]
-
-    func addItems(_ items: [LocationDataModel]) {
-        inMemoryLocations += items
-    }
-
-    func clearCache() {
-        inMemoryLocations = []
-    }
-
     // MARK: - Init
 
     init() {
         self.inMemoryLocations = []
     }
 
-    // MARK: - Internal
+    // MARK: - LocationsCacheInterface
 
+    private(set) var inMemoryLocations: [LocationDataModel]
 
+    /// Adds items in memory
+    /// - Parameter items: The list of items to add.
+    func addItems(_ items: [LocationDataModel]) {
+        inMemoryLocations += items
+    }
+
+    /// Clears the cache indefinitely.
+    func clearCache() {
+        inMemoryLocations = []
+    }
 }
 

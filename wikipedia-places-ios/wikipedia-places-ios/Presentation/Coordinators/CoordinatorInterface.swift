@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Interface for coordinators to implement.
 protocol CoordinatorInterface {
     func start()
 }

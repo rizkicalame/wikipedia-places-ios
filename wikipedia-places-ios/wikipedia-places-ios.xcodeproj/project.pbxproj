@@ -380,13 +380,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		3C676CE12C78E85F00641261 /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Generated;
-			sourceTree = "<group>";
-		};
 		3C676CE32C78E86500641261 /* Sourcery */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,7 +443,6 @@
 				3C3132F32C79CB2D004EAA95 /* Data */,
 				3C3132F22C79CB27004EAA95 /* Domain */,
 				3C3132F12C79CB1B004EAA95 /* Presentation */,
-				3C676CE12C78E85F00641261 /* Generated */,
 			);
 			path = "wikipedia-places-iosTests";
 			sourceTree = "<group>";

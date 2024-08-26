@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Accessibility
+/// Accessibility  extension so that the ViewModel can determine accessibility values.
 extension HomeViewModel {
     func accessibilityLabel(for location: LocationDomainModel) -> String {
         if let name = location.name {

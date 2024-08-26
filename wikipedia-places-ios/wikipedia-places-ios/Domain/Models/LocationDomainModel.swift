@@ -19,7 +19,7 @@ struct LocationDomainModel: DomainModelInterface, Identifiable {
     let latitude: Double
     let longitude: Double
 
-    // MARK: - Computed
+    // MARK: - UI
 
     var presentedName: String {
         name ?? "No name provided"
