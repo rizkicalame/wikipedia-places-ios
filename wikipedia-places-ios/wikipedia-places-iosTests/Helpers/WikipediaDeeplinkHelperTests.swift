@@ -8,18 +8,23 @@
 import XCTest
 @testable import wikipedia_places_ios
 
-final class WikipediaDeeplinkHelperTests: XCTestCase {
+final class WikipediaDeeplinkURLOpenerTests: XCTestCase {
+
+    // MARK: - Properties
+
+    var sut: WikipediaDeeplinkURLOpener!
 
     // MARK: - Tests
 
     func testShouldGetDeeplinkURL() {
         // Given
+        sut = WikipediaDeeplinkURLOpener()
         let domainModel = LocationDomainModel(name: "Name", latitude: 1.1234, longitude: 2.1234)
 
         // When
-        let deeplinkURL = WikipediaDeeplinkHelper.getCoordinatesDeeplinkURL(location: domainModel)
+        let deeplinkURL = sut.getCoordinatesDeeplinkURL(latitude: domainModel.latitude, longitude: domainModel.longitude)
 
         // Then
-        XCTAssertEqual(deeplinkURL, "wikipedia://places/?WMFPlacesCoordinates=1.1234,2.1234")
+        XCTAssertEqual(deeplinkURL?.absoluteString, "wikipedia://places/?WMFPlacesCoordinates=1.1234,2.1234")
     }
 }

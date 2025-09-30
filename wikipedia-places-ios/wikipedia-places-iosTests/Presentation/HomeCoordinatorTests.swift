@@ -20,7 +20,7 @@ final class HomeCoordinatorTests: XCTestCase {
 
     // MARK: - Base dependencies
 
-    var mockURLOpener: URLOpenerInterfaceMock!
+    var mockDeeplinkOpener: WikipediaDeeplinkURLOpenerInterfaceMock!
     var mockCustomLocationsCache: CustomLocationsCacheInterfaceMock!
     var mockAPIClient: APIClientInterfaceMock<[LocationDataModel]>!
     var mockErrorHandler: ErrorHandlerInterfaceMock!
@@ -58,7 +58,7 @@ final class HomeCoordinatorTests: XCTestCase {
     }
 
     private func setUpBaseDependencies() -> BaseDependenciesInterface {
-        mockURLOpener = URLOpenerInterfaceMock()
+        mockDeeplinkOpener = WikipediaDeeplinkURLOpenerInterfaceMock()
         mockCustomLocationsCache = CustomLocationsCacheInterfaceMock()
         mockAPIClient = APIClientInterfaceMock()
         mockErrorHandler = ErrorHandlerInterfaceMock()
@@ -66,7 +66,7 @@ final class HomeCoordinatorTests: XCTestCase {
         let baseDependencies = BaseDependenciesInterfaceMock()
         baseDependencies.apiClient = mockAPIClient
         baseDependencies.customLocationsCache = mockCustomLocationsCache
-        baseDependencies.urlOpener = mockURLOpener
+        baseDependencies.deeplinkOpener = mockDeeplinkOpener
         baseDependencies.errorHandler = mockErrorHandler
 
         return baseDependencies

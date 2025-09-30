@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C19154A2E8C761100531D9B /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1915492E8C760E00531D9B /* URLOpener.swift */; };
 		3C3132F52C79CB4E004EAA95 /* LocationsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3132F42C79CB4E004EAA95 /* LocationsRepositoryTests.swift */; };
 		3C3132F82C7B24C0004EAA95 /* MockObjects.manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3132F72C7B24C0004EAA95 /* MockObjects.manual.swift */; };
 		3C3132FB2C7B997B004EAA95 /* AddCustomLocationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3132FA2C7B997B004EAA95 /* AddCustomLocationUseCaseTests.swift */; };
@@ -41,13 +42,12 @@
 		3C676CD72C78BB9500641261 /* FormInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD62C78BB9500641261 /* FormInputField.swift */; };
 		3C676CDA2C78BD6C00641261 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CD92C78BD6C00641261 /* RoundedCorners.swift */; };
 		3C676CDC2C78BE8C00641261 /* AddCustomLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */; };
-		3C676CDF2C78C19000641261 /* WikipediaDeeplinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */; };
 		3C676CE22C78E85F00641261 /* MockObjects.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CE02C78E85F00641261 /* MockObjects.generated.swift */; };
 		3C676CE62C78EC8700641261 /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C676CE42C78E87000641261 /* AutoMockable.swift */; };
 		3C7181D42E8B1E7E003D5B16 /* BaseDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7181D32E8B1E7A003D5B16 /* BaseDependencies.swift */; };
 		3C7182FA2E8BEC5E003D5B16 /* WikipediaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7182F92E8BEC5B003D5B16 /* WikipediaCoordinator.swift */; };
 		3C7182FD2E8BF0D3003D5B16 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7182FC2E8BF0D0003D5B16 /* ErrorHandler.swift */; };
-		3C71837E2E8BF222003D5B16 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C71837D2E8BF21F003D5B16 /* URLOpener.swift */; };
+		3C71837E2E8BF222003D5B16 /* WikipediaDeeplinkURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C71837D2E8BF21F003D5B16 /* WikipediaDeeplinkURLOpener.swift */; };
 		3C909C332C76576500D92742 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C322C76576500D92742 /* HomeView.swift */; };
 		3C909C352C76576600D92742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C342C76576600D92742 /* Assets.xcassets */; };
 		3C909C382C76576600D92742 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C372C76576600D92742 /* Preview Assets.xcassets */; };
@@ -74,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C1915492E8C760E00531D9B /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		3C3132F42C79CB4E004EAA95 /* LocationsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsRepositoryTests.swift; sourceTree = "<group>"; };
 		3C3132F72C7B24C0004EAA95 /* MockObjects.manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.manual.swift; sourceTree = "<group>"; };
 		3C3132FA2C7B997B004EAA95 /* AddCustomLocationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationUseCaseTests.swift; sourceTree = "<group>"; };
@@ -111,13 +112,12 @@
 		3C676CD62C78BB9500641261 /* FormInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputField.swift; sourceTree = "<group>"; };
 		3C676CD92C78BD6C00641261 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		3C676CDB2C78BE8C00641261 /* AddCustomLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationViewModel.swift; sourceTree = "<group>"; };
-		3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDeeplinkHelper.swift; sourceTree = "<group>"; };
 		3C676CE02C78E85F00641261 /* MockObjects.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockObjects.generated.swift; sourceTree = "<group>"; };
 		3C676CE42C78E87000641261 /* AutoMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
 		3C7181D32E8B1E7A003D5B16 /* BaseDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDependencies.swift; sourceTree = "<group>"; };
 		3C7182F92E8BEC5B003D5B16 /* WikipediaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaCoordinator.swift; sourceTree = "<group>"; };
 		3C7182FC2E8BF0D0003D5B16 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		3C71837D2E8BF21F003D5B16 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
+		3C71837D2E8BF21F003D5B16 /* WikipediaDeeplinkURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDeeplinkURLOpener.swift; sourceTree = "<group>"; };
 		3C909C2D2C76576500D92742 /* wikipedia-places-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wikipedia-places-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C909C322C76576500D92742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3C909C342C76576600D92742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,6 +154,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C1915482E8C75FE00531D9B /* Deeplinking */ = {
+			isa = PBXGroup;
+			children = (
+				3C1915492E8C760E00531D9B /* URLOpener.swift */,
+				3C71837D2E8BF21F003D5B16 /* WikipediaDeeplinkURLOpener.swift */,
+			);
+			path = Deeplinking;
+			sourceTree = "<group>";
+		};
 		3C3132F12C79CB1B004EAA95 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,8 +393,7 @@
 		3C676CDD2C78C18300641261 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3C71837D2E8BF21F003D5B16 /* URLOpener.swift */,
-				3C676CDE2C78C19000641261 /* WikipediaDeeplinkHelper.swift */,
+				3C1915482E8C75FE00531D9B /* Deeplinking */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -631,12 +639,12 @@
 				3C676C5F2C767AEB00641261 /* LocationDomainModel.swift in Sources */,
 				3C676C852C77B9B800641261 /* CoordinatorInterface.swift in Sources */,
 				3C909C332C76576500D92742 /* HomeView.swift in Sources */,
+				3C19154A2E8C761100531D9B /* URLOpener.swift in Sources */,
 				3C676CD52C78BAF600641261 /* FormInputLabel.swift in Sources */,
 				3C676C772C77472400641261 /* LocationsRepositoryInterface.swift in Sources */,
 				3C31330F2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift in Sources */,
 				3C676CDC2C78BE8C00641261 /* AddCustomLocationViewModel.swift in Sources */,
 				3C7182FA2E8BEC5E003D5B16 /* WikipediaCoordinator.swift in Sources */,
-				3C676CDF2C78C19000641261 /* WikipediaDeeplinkHelper.swift in Sources */,
 				3C676C792C7747F100641261 /* LocationsRepository.swift in Sources */,
 				3C676CD02C78985700641261 /* CustomLocationsCache.swift in Sources */,
 				3C676CD72C78BB9500641261 /* FormInputField.swift in Sources */,
@@ -655,7 +663,7 @@
 				3C676C892C77BA6200641261 /* AppDelegate.swift in Sources */,
 				3C676CE62C78EC8700641261 /* AutoMockable.swift in Sources */,
 				3C676C6A2C772E2F00641261 /* APIClient.swift in Sources */,
-				3C71837E2E8BF222003D5B16 /* URLOpener.swift in Sources */,
+				3C71837E2E8BF222003D5B16 /* WikipediaDeeplinkURLOpener.swift in Sources */,
 				3C3133112C7BBF6B004EAA95 /* AddCustomLocationViewModel+Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

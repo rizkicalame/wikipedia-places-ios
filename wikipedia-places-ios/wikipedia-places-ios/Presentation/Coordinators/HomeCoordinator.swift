@@ -50,7 +50,7 @@ final class HomeCoordinator: CoordinatorInterface {
     private func deeplinkToWikipedia(location: LocationDomainModel) {
         let wikiCoordinator = WikipediaCoordinator(location: location,
                                                    navigationController: self.navigationController,
-                                                   urlOpener: baseDependencies.urlOpener,
+                                                   deeplinkOpener: baseDependencies.deeplinkOpener,
                                                    errorHandler: baseDependencies.errorHandler)
         wikiCoordinator.start()
     }

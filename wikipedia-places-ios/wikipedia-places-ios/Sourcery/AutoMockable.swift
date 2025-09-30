@@ -9,7 +9,7 @@
 
 // Base Dependencies
 extension BaseDependenciesInterface {}
-extension URLOpenerInterface {}
+extension WikipediaDeeplinkURLOpenerInterface {}
 extension ErrorHandlerInterface {}
 
 // Repositories

@@ -8,7 +8,7 @@
 protocol BaseDependenciesInterface {
     var apiClient: APIClientInterface { get }
     var customLocationsCache: CustomLocationsCacheInterface { get }
-    var urlOpener: URLOpenerInterface { get }
+    var deeplinkOpener: WikipediaDeeplinkURLOpenerInterface { get }
     var errorHandler: ErrorHandlerInterface { get }
 }
 
@@ -18,18 +18,18 @@ struct BaseDependencies: BaseDependenciesInterface {
 
     var apiClient: any APIClientInterface
     var customLocationsCache: any CustomLocationsCacheInterface
-    var urlOpener: any URLOpenerInterface
+    var deeplinkOpener: any WikipediaDeeplinkURLOpenerInterface
     var errorHandler: any ErrorHandlerInterface
 
     // MARK: - Init
 
     init(apiClient: any APIClientInterface,
          customLocationsCache: any CustomLocationsCacheInterface,
-         urlOpener: any URLOpenerInterface,
+         deeplinkOpener: any WikipediaDeeplinkURLOpenerInterface,
          errorHandler: any ErrorHandlerInterface) {
         self.apiClient = apiClient
         self.customLocationsCache = customLocationsCache
-        self.urlOpener = urlOpener
+        self.deeplinkOpener = deeplinkOpener
         self.errorHandler = errorHandler
     }
 
@@ -40,11 +40,11 @@ struct BaseDependencies: BaseDependenciesInterface {
     static func bootstrap() -> BaseDependencies {
         let apiClient = APIClient(baseURL: Configuration.value(for: .apiURL))
         let customLocationsCache = CustomLocationsCache()
-        let urlOpener = URLOpener()
+        let deeplinkOpener = WikipediaDeeplinkURLOpener()
         let errorHandler = ErrorHandler()
         return BaseDependencies(apiClient: apiClient,
                                 customLocationsCache: customLocationsCache,
-                                urlOpener: urlOpener,
+                                deeplinkOpener: deeplinkOpener,
                                 errorHandler: errorHandler)
     }
 }

@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol LocalizedError: Error {
-    var reason: String { get }
-    var recoverySuggestion: String { get }
-}
-
 protocol ErrorHandlerInterface {
     @MainActor
     func handleError(_ error: Error, in viewController: UIViewController)
@@ -24,7 +19,7 @@ struct ErrorHandler: ErrorHandlerInterface {
             return
         }
 
-        let alertController = createAlertController(title: localizedError.reason,
+        let alertController = createAlertController(title: localizedError.failureReason,
                                                     message: localizedError.recoverySuggestion)
         viewController.present(alertController, animated: true)
     }
@@ -37,7 +32,7 @@ struct ErrorHandler: ErrorHandlerInterface {
         viewController.present(alertController, animated: true)
     }
 
-    private func createAlertController(title: String, message: String) -> UIAlertController {
+    private func createAlertController(title: String?, message: String?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Close", style: .cancel)
         alertController.addAction(action)

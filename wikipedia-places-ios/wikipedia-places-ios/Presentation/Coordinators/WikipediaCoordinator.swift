@@ -13,30 +13,29 @@ final class WikipediaCoordinator: CoordinatorInterface {
 
     let location: LocationDomainModel
     let navigationController: UINavigationController
-    let urlOpener: URLOpenerInterface
+    let deeplinkOpener: WikipediaDeeplinkURLOpenerInterface
     let errorHandler: ErrorHandlerInterface
 
     // MARK: - Init
 
     init(location: LocationDomainModel,
          navigationController: UINavigationController,
-         urlOpener: URLOpenerInterface,
+         deeplinkOpener: WikipediaDeeplinkURLOpenerInterface,
          errorHandler: ErrorHandlerInterface) {
         self.location = location
         self.navigationController = navigationController
-        self.urlOpener = urlOpener
+        self.deeplinkOpener = deeplinkOpener
         self.errorHandler = errorHandler
     }
 
     // MARK: - CoordinatorInterface
 
     func start() {
-        guard let url = URL(string: WikipediaDeeplinkHelper.getCoordinatesDeeplinkURL(location: location)) else {
-            return
-        }
-
         Task {
-            await urlOpener.openDeeplinkURLIfPossible(url, in: navigationController, errorHandler: errorHandler)
+            await deeplinkOpener.openDeeplinkWithCoordinatesIfPossible(latitude: location.latitude,
+                                                                  longitude: location.longitude,
+                                                                  in: navigationController,
+                                                                  errorHandler: errorHandler)
         }
     }
 }

@@ -72,11 +72,11 @@ class BaseDependenciesInterfaceMock: BaseDependenciesInterface {
         set(value) { underlyingCustomLocationsCache = value }
     }
     var underlyingCustomLocationsCache: (CustomLocationsCacheInterface)!
-    var urlOpener: URLOpenerInterface {
-        get { return underlyingUrlOpener }
-        set(value) { underlyingUrlOpener = value }
+    var deeplinkOpener: WikipediaDeeplinkURLOpenerInterface {
+        get { return underlyingDeeplinkOpener }
+        set(value) { underlyingDeeplinkOpener = value }
     }
-    var underlyingUrlOpener: (URLOpenerInterface)!
+    var underlyingDeeplinkOpener: (WikipediaDeeplinkURLOpenerInterface)!
     var errorHandler: ErrorHandlerInterface {
         get { return underlyingErrorHandler }
         set(value) { underlyingErrorHandler = value }
@@ -182,27 +182,49 @@ class LocationsRepositoryInterfaceMock: LocationsRepositoryInterface {
     }
 
 }
-class URLOpenerInterfaceMock: URLOpenerInterface {
+class WikipediaDeeplinkURLOpenerInterfaceMock: WikipediaDeeplinkURLOpenerInterface {
 
 
 
 
-    //MARK: - openDeeplinkURLIfPossible
+    //MARK: - openDeeplinkWithCoordinatesIfPossible
 
-    var openDeeplinkURLIfPossibleInErrorHandlerCallsCount = 0
-    var openDeeplinkURLIfPossibleInErrorHandlerCalled: Bool {
-        return openDeeplinkURLIfPossibleInErrorHandlerCallsCount > 0
+    var openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerCallsCount = 0
+    var openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerCalled: Bool {
+        return openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerCallsCount > 0
     }
-    var openDeeplinkURLIfPossibleInErrorHandlerReceivedArguments: (url: URL, viewController: UIViewController, errorHandler: ErrorHandlerInterface)?
-    var openDeeplinkURLIfPossibleInErrorHandlerReceivedInvocations: [(url: URL, viewController: UIViewController, errorHandler: ErrorHandlerInterface)] = []
-    var openDeeplinkURLIfPossibleInErrorHandlerClosure: ((URL, UIViewController, ErrorHandlerInterface) async -> Void)?
+    var openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerReceivedArguments: (latitude: Double, longitude: Double, viewController: UIViewController, errorHandler: ErrorHandlerInterface)?
+    var openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerReceivedInvocations: [(latitude: Double, longitude: Double, viewController: UIViewController, errorHandler: ErrorHandlerInterface)] = []
+    var openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerClosure: ((Double, Double, UIViewController, ErrorHandlerInterface) async -> Void)?
 
     @MainActor
-    func openDeeplinkURLIfPossible(_ url: URL, in viewController: UIViewController, errorHandler: ErrorHandlerInterface) async {
-        openDeeplinkURLIfPossibleInErrorHandlerCallsCount += 1
-        openDeeplinkURLIfPossibleInErrorHandlerReceivedArguments = (url: url, viewController: viewController, errorHandler: errorHandler)
-        openDeeplinkURLIfPossibleInErrorHandlerReceivedInvocations.append((url: url, viewController: viewController, errorHandler: errorHandler))
-        await openDeeplinkURLIfPossibleInErrorHandlerClosure?(url, viewController, errorHandler)
+    func openDeeplinkWithCoordinatesIfPossible(latitude: Double, longitude: Double, in viewController: UIViewController, errorHandler: ErrorHandlerInterface) async {
+        openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerCallsCount += 1
+        openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerReceivedArguments = (latitude: latitude, longitude: longitude, viewController: viewController, errorHandler: errorHandler)
+        openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerReceivedInvocations.append((latitude: latitude, longitude: longitude, viewController: viewController, errorHandler: errorHandler))
+        await openDeeplinkWithCoordinatesIfPossibleLatitudeLongitudeInErrorHandlerClosure?(latitude, longitude, viewController, errorHandler)
+    }
+
+    //MARK: - getCoordinatesDeeplinkURL
+
+    var getCoordinatesDeeplinkURLLatitudeLongitudeCallsCount = 0
+    var getCoordinatesDeeplinkURLLatitudeLongitudeCalled: Bool {
+        return getCoordinatesDeeplinkURLLatitudeLongitudeCallsCount > 0
+    }
+    var getCoordinatesDeeplinkURLLatitudeLongitudeReceivedArguments: (latitude: Double, longitude: Double)?
+    var getCoordinatesDeeplinkURLLatitudeLongitudeReceivedInvocations: [(latitude: Double, longitude: Double)] = []
+    var getCoordinatesDeeplinkURLLatitudeLongitudeReturnValue: URL?
+    var getCoordinatesDeeplinkURLLatitudeLongitudeClosure: ((Double, Double) -> URL?)?
+
+    func getCoordinatesDeeplinkURL(latitude: Double, longitude: Double) -> URL? {
+        getCoordinatesDeeplinkURLLatitudeLongitudeCallsCount += 1
+        getCoordinatesDeeplinkURLLatitudeLongitudeReceivedArguments = (latitude: latitude, longitude: longitude)
+        getCoordinatesDeeplinkURLLatitudeLongitudeReceivedInvocations.append((latitude: latitude, longitude: longitude))
+        if let getCoordinatesDeeplinkURLLatitudeLongitudeClosure = getCoordinatesDeeplinkURLLatitudeLongitudeClosure {
+            return getCoordinatesDeeplinkURLLatitudeLongitudeClosure(latitude, longitude)
+        } else {
+            return getCoordinatesDeeplinkURLLatitudeLongitudeReturnValue
+        }
     }
 
 }
