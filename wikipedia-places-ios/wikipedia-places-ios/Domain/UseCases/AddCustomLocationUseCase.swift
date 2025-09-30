@@ -38,7 +38,7 @@ struct AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
     ///   - name: The name of the location. Optional.
     ///   - latitude: The latitude of the location. Should be a string castable to a Double, otherwise throws an error.
     ///   - longitude: The longitude of the location. Should be a string castable to a Double, otherwise throws an error.
-    func addCustomLocation(name: String?, latitude: String, longitude: String) async throws(ValidationErrors) {
+    func addCustomLocation(name: String?, latitude: String, longitude: String) async throws {
         guard let latitude = Double(latitude) else {
             throw ValidationErrors.invalidLatitudeProvided
         }

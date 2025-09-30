@@ -53,6 +53,7 @@
 		3C909C382C76576600D92742 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C909C372C76576600D92742 /* Preview Assets.xcassets */; };
 		3C909C4C2C76576600D92742 /* wikipedia_places_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C4B2C76576600D92742 /* wikipedia_places_iosUITests.swift */; };
 		3C909C4E2C76576600D92742 /* wikipedia_places_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909C4D2C76576600D92742 /* wikipedia_places_iosUITestsLaunchTests.swift */; };
+		3CC477342E8C66120068FC5A /* ConcurrencyExtras in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC477332E8C66120068FC5A /* ConcurrencyExtras */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC477342E8C66120068FC5A /* ConcurrencyExtras in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +580,9 @@
 				Base,
 			);
 			mainGroup = 3C909C242C76576500D92742;
+			packageReferences = (
+				3CC477322E8C66120068FC5A /* XCRemoteSwiftPackageReference "swift-concurrency-extras" */,
+			);
 			productRefGroup = 3C909C2E2C76576500D92742 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -986,6 +991,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3CC477322E8C66120068FC5A /* XCRemoteSwiftPackageReference "swift-concurrency-extras" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-concurrency-extras";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3CC477332E8C66120068FC5A /* ConcurrencyExtras */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CC477322E8C66120068FC5A /* XCRemoteSwiftPackageReference "swift-concurrency-extras" */;
+			productName = ConcurrencyExtras;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C909C252C76576500D92742 /* Project object */;
 }

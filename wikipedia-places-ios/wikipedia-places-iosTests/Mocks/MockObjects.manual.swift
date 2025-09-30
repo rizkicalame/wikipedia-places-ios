@@ -36,3 +36,58 @@ class APIClientInterfaceMock<T: Decodable>: APIClientInterface {
         }
     }
 }
+
+actor CustomLocationsCacheInterfaceMock: CustomLocationsCacheInterface {
+
+
+
+
+    //MARK: - getCustomLocations
+
+    var getCustomLocationsCallsCount = 0
+    var getCustomLocationsCalled: Bool {
+        return getCustomLocationsCallsCount > 0
+    }
+    var getCustomLocationsReturnValue: [LocationDataModel]!
+    var getCustomLocationsClosure: (() -> [LocationDataModel])?
+
+    func getCustomLocations() -> [LocationDataModel] {
+        getCustomLocationsCallsCount += 1
+        if let getCustomLocationsClosure = getCustomLocationsClosure {
+            return getCustomLocationsClosure()
+        } else {
+            return getCustomLocationsReturnValue
+        }
+    }
+
+    //MARK: - addLocations
+
+    var addLocationsCallsCount = 0
+    var addLocationsCalled: Bool {
+        return addLocationsCallsCount > 0
+    }
+    var addLocationsReceivedLocations: ([LocationDataModel])?
+    var addLocationsReceivedInvocations: [([LocationDataModel])] = []
+    var addLocationsClosure: (([LocationDataModel]) -> Void)?
+
+    func addLocations(_ locations: [LocationDataModel]) {
+        addLocationsCallsCount += 1
+        addLocationsReceivedLocations = locations
+        addLocationsReceivedInvocations.append(locations)
+        addLocationsClosure?(locations)
+    }
+
+    //MARK: - clearCache
+
+    var clearCacheCallsCount = 0
+    var clearCacheCalled: Bool {
+        return clearCacheCallsCount > 0
+    }
+    var clearCacheClosure: (() -> Void)?
+
+    func clearCache() {
+        clearCacheCallsCount += 1
+        clearCacheClosure?()
+    }
+
+}

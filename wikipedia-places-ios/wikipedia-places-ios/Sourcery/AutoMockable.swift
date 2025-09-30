@@ -7,6 +7,11 @@
 
 // sourcery:begin: AutoMockable
 
+// Base Dependencies
+extension BaseDependenciesInterface {}
+extension URLOpenerInterface {}
+extension ErrorHandlerInterface {}
+
 // Repositories
 extension LocationsRepositoryInterface {}
 

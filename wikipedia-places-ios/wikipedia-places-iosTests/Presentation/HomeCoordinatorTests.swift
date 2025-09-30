@@ -9,6 +9,7 @@ import XCTest
 import SwiftUI
 @testable import wikipedia_places_ios
 
+@MainActor
 final class HomeCoordinatorTests: XCTestCase {
 
     // MARK: - Properties
@@ -17,6 +18,13 @@ final class HomeCoordinatorTests: XCTestCase {
     var sut: HomeCoordinator!
     var navigationController: UINavigationController!
 
+    // MARK: - Base dependencies
+
+    var mockURLOpener: URLOpenerInterfaceMock!
+    var mockCustomLocationsCache: CustomLocationsCacheInterfaceMock!
+    var mockAPIClient: APIClientInterfaceMock<[LocationDataModel]>!
+    var mockErrorHandler: ErrorHandlerInterfaceMock!
+
     // MARK: - XCTestCase
 
     override func setUp() {
@@ -24,9 +32,11 @@ final class HomeCoordinatorTests: XCTestCase {
 
         window = UIWindow(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
         window.makeKeyAndVisible()
-        
+
+        let baseDependencies = setUpBaseDependencies()
+
         navigationController = UINavigationController()
-        sut = HomeCoordinator(navigationController: navigationController)
+        sut = HomeCoordinator(baseDependencies: baseDependencies, navigationController: navigationController)
 
         // Load view
         window.rootViewController = navigationController
@@ -35,7 +45,7 @@ final class HomeCoordinatorTests: XCTestCase {
     }
 
     // MARK: - Tests
-    @MainActor
+
     func testShouldSetViewControllersWhenStarted() {
         // Given
         // When
@@ -45,5 +55,20 @@ final class HomeCoordinatorTests: XCTestCase {
 
         XCTAssertFalse(navigationController.viewControllers.isEmpty)
         XCTAssertTrue(navigationController.viewControllers.first! is UIHostingController<HomeView>)
+    }
+
+    private func setUpBaseDependencies() -> BaseDependenciesInterface {
+        mockURLOpener = URLOpenerInterfaceMock()
+        mockCustomLocationsCache = CustomLocationsCacheInterfaceMock()
+        mockAPIClient = APIClientInterfaceMock()
+        mockErrorHandler = ErrorHandlerInterfaceMock()
+
+        let baseDependencies = BaseDependenciesInterfaceMock()
+        baseDependencies.apiClient = mockAPIClient
+        baseDependencies.customLocationsCache = mockCustomLocationsCache
+        baseDependencies.urlOpener = mockURLOpener
+        baseDependencies.errorHandler = mockErrorHandler
+
+        return baseDependencies
     }
 }

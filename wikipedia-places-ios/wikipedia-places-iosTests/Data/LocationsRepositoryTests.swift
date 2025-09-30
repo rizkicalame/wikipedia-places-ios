@@ -65,12 +65,12 @@ final class LocationsRepositoryTests: XCTestCase {
         }
     }
 
-    func testShouldRetrieveCustomLocations() {
+    func testShouldRetrieveCustomLocations() async {
         // Given
         let dataModel = LocationDataModel(name: "location 1", latitude: 50.0000, longitude: 14.0000)
         let customLocationDataModel = LocationDataModel(name: "customLocation", latitude: 12.000, longitude: 13.000)
         apiClientMock.performRequestPathMethodKeyPathReturnValue = [dataModel]
-        cache.addItems([customLocationDataModel])
+        await cache.addLocations([customLocationDataModel])
 
         // When
         Task {
@@ -91,7 +91,7 @@ final class LocationsRepositoryTests: XCTestCase {
         }
     }
 
-    func testShouldCreateCustomLocation() {
+    func testShouldCreateCustomLocation() async {
         // Given
         let customLocationDataModel = LocationDomainModel(name: "customLocation", latitude: 12.000, longitude: 13.000)
         apiClientMock.performRequestPathMethodKeyPathReturnValue = []
@@ -100,7 +100,7 @@ final class LocationsRepositoryTests: XCTestCase {
         Task {
             let initialResult = try await sut.getLocations()
             XCTAssertEqual(initialResult.count, 0)
-            self.sut.createCustomLocation(location: customLocationDataModel)
+            await sut.createCustomLocation(location: customLocationDataModel)
 
             // Then
 

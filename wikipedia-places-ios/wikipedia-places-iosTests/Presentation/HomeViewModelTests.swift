@@ -43,33 +43,37 @@ final class HomeViewModelTests: XCTestCase {
     }
 
     @MainActor
-    func testShouldInformDelegateOfLocationTap() {
+    func testShouldInformEventSubscriberOfLocationTap() {
         // Given
         let domainModel = LocationDomainModel(name: "Name", latitude: 1.000, longitude: 2.000)
-        let mockDelegate = HomeViewModelDelegateMock()
-        sut.delegate = mockDelegate
+        let expectation = XCTestExpectation(description: "Expected closure event to be called")
+        sut.onLocationTapped = { location in
+            // Then
+            XCTAssertEqual(location.name, domainModel.name)
+            XCTAssertEqual(location.latitude, domainModel.latitude)
+            XCTAssertEqual(location.longitude, domainModel.longitude)
+            expectation.fulfill()
+        }
 
         // When
         sut.onRowTapped(location: domainModel)
 
-        // Then
-        XCTAssertTrue(mockDelegate.didTapLocationLocationSenderCalled)
-        XCTAssertEqual(mockDelegate.didTapLocationLocationSenderReceivedArguments?.location.name, domainModel.name)
-        XCTAssertEqual(mockDelegate.didTapLocationLocationSenderReceivedArguments?.location.latitude, domainModel.latitude)
-        XCTAssertEqual(mockDelegate.didTapLocationLocationSenderReceivedArguments?.location.longitude, domainModel.longitude)
+        wait(for: [expectation])
     }
 
     @MainActor
     func testShouldInformDelegateOfCustomLocationTap() {
         // Given
-        let mockDelegate = HomeViewModelDelegateMock()
-        sut.delegate = mockDelegate
+        let expectation = XCTestExpectation(description: "Expected closure event to be called")
+        sut.onAddCustomLocationTapped = {
+            expectation.fulfill()
+        }
 
         // When
-        sut.onAddCustomLocationTapped()
+        sut.addCustomLocation()
 
         // Then
-        XCTAssertTrue(mockDelegate.didTapAddCustomLocationSenderCalled)
+        wait(for: [expectation])
     }
 
     @MainActor

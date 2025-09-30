@@ -6,9 +6,11 @@
 //
 
 import XCTest
+import ConcurrencyExtras
 
 @testable import wikipedia_places_ios
 
+@MainActor
 final class AddCustomLocationViewModelTests: XCTestCase {
 
     // MARK: - Properties
@@ -17,21 +19,26 @@ final class AddCustomLocationViewModelTests: XCTestCase {
     var useCaseMock: AddCustomLocationUseCaseInterfaceMock!
 
     // MARK: - XCTestCase
+
     override func setUp() {
         super.setUp()
+        
         useCaseMock = AddCustomLocationUseCaseInterfaceMock()
         sut = AddCustomLocationViewModel(useCase: useCaseMock)
     }
 
     // MARK: - Tests
 
-    func testShouldCallUseCaseWhenSubmitTapped() {
-        // Given
-        // When
-        sut.onSubmitTapped()
+    func testShouldCallUseCaseWhenSubmitTapped() async {
+        await withMainSerialExecutor {
+            // Given
+            // When
+            sut.onSubmitTapped()
 
-        // Then
-        XCTAssertTrue(useCaseMock.addCustomLocationNameLatitudeLongitudeCalled)
+            // Then
+            await Task.yield()
+            XCTAssertTrue(useCaseMock.addCustomLocationNameLatitudeLongitudeCalled)
+        }
     }
 
     func testShouldSetCorrectFormTexts() {
@@ -56,38 +63,47 @@ final class AddCustomLocationViewModelTests: XCTestCase {
         XCTAssertFalse(shouldDisplayErrorMessage)
     }
 
-    func testShouldShowErrorWhenInvalidLatitudeProvided() {
-        // Given
-        useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = AddCustomLocationUseCase.ValidationErrors.invalidLatitudeProvided
+    func testShouldShowErrorWhenInvalidLatitudeProvided() async {
+        await withMainSerialExecutor {
+            // Given
+            useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = AddCustomLocationUseCase.ValidationErrors.invalidLatitudeProvided
 
-        // When
-        sut.onSubmitTapped()
+            // When
+            sut.onSubmitTapped()
 
-        // Then
-        XCTAssertTrue(sut.shouldDisplayErrorMessage)
-        XCTAssertEqual(sut.errorText, "Please provide a valid latitude.")
+            // Then
+            await Task.yield()
+            XCTAssertTrue(sut.shouldDisplayErrorMessage)
+            XCTAssertEqual(sut.errorText, "Please provide a valid latitude.")
+        }
     }
 
-    func testShouldShowErrorWhenInvalidLongitudeProvided() {
-        // Given
-        useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = AddCustomLocationUseCase.ValidationErrors.invalidLongitudeProvided
+    func testShouldShowErrorWhenInvalidLongitudeProvided() async {
+        await withMainSerialExecutor {
+            // Given
+            useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = AddCustomLocationUseCase.ValidationErrors.invalidLongitudeProvided
 
-        // When
-        sut.onSubmitTapped()
+            // When
+            sut.onSubmitTapped()
 
-        // Then
-        XCTAssertTrue(sut.shouldDisplayErrorMessage)
-        XCTAssertEqual(sut.errorText, "Please provide a valid longitude.")
+            // Then
+            await Task.yield()
+            XCTAssertTrue(sut.shouldDisplayErrorMessage)
+            XCTAssertEqual(sut.errorText, "Please provide a valid longitude.")
+        }
     }
 
-    func testShouldShowErrorWhenUnknownErrorOccurred() {
-        // Given
-        useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = APIClient.APIError.invalidKeyPathSpecified
-        // When
-        sut.onSubmitTapped()
+    func testShouldShowErrorWhenUnknownErrorOccurred() async {
+        await withMainSerialExecutor {
+            // Given
+            useCaseMock.addCustomLocationNameLatitudeLongitudeThrowableError = APIClient.APIError.invalidKeyPathSpecified
+            // When
+            sut.onSubmitTapped()
 
-        // Then
-        XCTAssertTrue(sut.shouldDisplayErrorMessage)
-        XCTAssertEqual(sut.errorText, "An unknown error has occurred.")
+            // Then
+            await Task.yield()
+            XCTAssertTrue(sut.shouldDisplayErrorMessage)
+            XCTAssertEqual(sut.errorText, "An unknown error has occurred.")
+        }
     }
 }

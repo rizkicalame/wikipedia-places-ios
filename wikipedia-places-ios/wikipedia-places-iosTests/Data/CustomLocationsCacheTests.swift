@@ -6,7 +6,7 @@
 //
 
 import XCTest
-
+import ConcurrencyExtras
 @testable import wikipedia_places_ios
 
 final class CustomLocationsCacheTests: XCTestCase {
@@ -25,31 +25,35 @@ final class CustomLocationsCacheTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testShouldAddItemsInMemory() {
+    func testShouldAddItemsInMemory() async {
         // Given
         let item = LocationDataModel(name: "Name", latitude: 14.00, longitude: 15.00)
 
         // When
-        sut.addItems([item])
+        await sut.addLocations([item])
 
         // Then
-        XCTAssertFalse(sut.inMemoryLocations.isEmpty)
-        XCTAssertEqual(sut.inMemoryLocations.count, 1)
-        XCTAssertEqual(sut.inMemoryLocations[0].name, item.name)
-        XCTAssertEqual(sut.inMemoryLocations[0].latitude, item.latitude)
-        XCTAssertEqual(sut.inMemoryLocations[0].longitude, item.longitude)
+        let locations = await sut.getCustomLocations()
+        XCTAssertFalse(locations.isEmpty)
+        XCTAssertEqual(locations.count, 1)
+        XCTAssertEqual(locations[0].name, item.name)
+        XCTAssertEqual(locations[0].latitude, item.latitude)
+        XCTAssertEqual(locations[0].longitude, item.longitude)
     }
 
-    func testShouldClearCache() {
+    func testShouldClearCache() async {
         // Given
         let item = LocationDataModel(name: "Name", latitude: 14.00, longitude: 15.00)
-        sut.addItems([item])
-        XCTAssertFalse(sut.inMemoryLocations.isEmpty)
+        await sut.addLocations([item])
+
+        let locations = await sut.getCustomLocations()
+        XCTAssertFalse(locations.isEmpty)
 
         // When
-        sut.clearCache()
+        await sut.clearCache()
 
         // Then
-        XCTAssertTrue(sut.inMemoryLocations.isEmpty)
+        let newLocations = await sut.getCustomLocations()
+        XCTAssertTrue(newLocations.isEmpty)
     }
 }
