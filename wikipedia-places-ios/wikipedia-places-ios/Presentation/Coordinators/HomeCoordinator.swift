@@ -36,6 +36,10 @@ final class HomeCoordinator: CoordinatorInterface {
     // MARK: - Private
 
     @objc
+    private func onCloseTapped() {
+        dismissFlow(onCompletion: nil)
+    }
+
     private func dismissFlow(onCompletion: (() -> Void)?) {
         presentingNavigationController?.dismiss(animated: true) {
             onCompletion?()
@@ -86,7 +90,7 @@ final class HomeCoordinator: CoordinatorInterface {
     private func presentAddCustomLocationView() {
         let viewController = makeAddCustomLocationViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
-        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissFlow))
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(onCloseTapped))
         self.navigationController.present(navigationController, animated: true)
 
         presentingNavigationController = self.navigationController
