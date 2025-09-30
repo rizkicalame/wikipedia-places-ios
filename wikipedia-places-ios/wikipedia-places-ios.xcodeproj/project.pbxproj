@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C19154A2E8C761100531D9B /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1915492E8C760E00531D9B /* URLOpener.swift */; };
+		3C19154C2E8C7B5D00531D9B /* WikipediaCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C19154B2E8C7B5600531D9B /* WikipediaCoordinatorTests.swift */; };
 		3C3132F52C79CB4E004EAA95 /* LocationsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3132F42C79CB4E004EAA95 /* LocationsRepositoryTests.swift */; };
 		3C3132F82C7B24C0004EAA95 /* MockObjects.manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3132F72C7B24C0004EAA95 /* MockObjects.manual.swift */; };
 		3C3132FB2C7B997B004EAA95 /* AddCustomLocationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3132FA2C7B997B004EAA95 /* AddCustomLocationUseCaseTests.swift */; };
@@ -15,7 +16,7 @@
 		3C3132FF2C7BA0B9004EAA95 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3132FE2C7BA0B9004EAA95 /* HomeViewModelTests.swift */; };
 		3C3133012C7BA5DD004EAA95 /* AddCustomLocationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3133002C7BA5DD004EAA95 /* AddCustomLocationViewModelTests.swift */; };
 		3C3133032C7BADA6004EAA95 /* CustomLocationsCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3133022C7BADA6004EAA95 /* CustomLocationsCacheTests.swift */; };
-		3C3133062C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift */; };
+		3C3133062C7BAF7C004EAA95 /* WikipediaDeeplinkURLOpenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkURLOpenerTests.swift */; };
 		3C31330B2C7BB25C004EAA95 /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31330A2C7BB25C004EAA95 /* HomeCoordinatorTests.swift */; };
 		3C31330D2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31330C2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift */; };
 		3C31330F2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31330E2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		3C1915492E8C760E00531D9B /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
+		3C19154B2E8C7B5600531D9B /* WikipediaCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaCoordinatorTests.swift; sourceTree = "<group>"; };
 		3C3132F42C79CB4E004EAA95 /* LocationsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsRepositoryTests.swift; sourceTree = "<group>"; };
 		3C3132F72C7B24C0004EAA95 /* MockObjects.manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.manual.swift; sourceTree = "<group>"; };
 		3C3132FA2C7B997B004EAA95 /* AddCustomLocationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationUseCaseTests.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		3C3132FE2C7BA0B9004EAA95 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		3C3133002C7BA5DD004EAA95 /* AddCustomLocationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationViewModelTests.swift; sourceTree = "<group>"; };
 		3C3133022C7BADA6004EAA95 /* CustomLocationsCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocationsCacheTests.swift; sourceTree = "<group>"; };
-		3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDeeplinkHelperTests.swift; sourceTree = "<group>"; };
+		3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkURLOpenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDeeplinkURLOpenerTests.swift; sourceTree = "<group>"; };
 		3C31330A2C7BB25C004EAA95 /* HomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorTests.swift; sourceTree = "<group>"; };
 		3C31330C2C7BBF4D004EAA95 /* HomeViewModel+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+Localization.swift"; sourceTree = "<group>"; };
 		3C31330E2C7BBF5E004EAA95 /* HomeViewModel+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+Accessibility.swift"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		3C3132F12C79CB1B004EAA95 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3C19154B2E8C7B5600531D9B /* WikipediaCoordinatorTests.swift */,
 				3C3132FE2C7BA0B9004EAA95 /* HomeViewModelTests.swift */,
 				3C3133002C7BA5DD004EAA95 /* AddCustomLocationViewModelTests.swift */,
 				3C31330A2C7BB25C004EAA95 /* HomeCoordinatorTests.swift */,
@@ -211,7 +214,7 @@
 		3C3133042C7BAF6B004EAA95 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift */,
+				3C3133052C7BAF7C004EAA95 /* WikipediaDeeplinkURLOpenerTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -679,8 +682,9 @@
 				3C676CE22C78E85F00641261 /* MockObjects.generated.swift in Sources */,
 				3C3133012C7BA5DD004EAA95 /* AddCustomLocationViewModelTests.swift in Sources */,
 				3C3132FB2C7B997B004EAA95 /* AddCustomLocationUseCaseTests.swift in Sources */,
-				3C3133062C7BAF7C004EAA95 /* WikipediaDeeplinkHelperTests.swift in Sources */,
+				3C3133062C7BAF7C004EAA95 /* WikipediaDeeplinkURLOpenerTests.swift in Sources */,
 				3C3132F82C7B24C0004EAA95 /* MockObjects.manual.swift in Sources */,
+				3C19154C2E8C7B5D00531D9B /* WikipediaCoordinatorTests.swift in Sources */,
 				3C3132FF2C7BA0B9004EAA95 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

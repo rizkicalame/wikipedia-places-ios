@@ -182,6 +182,58 @@ class LocationsRepositoryInterfaceMock: LocationsRepositoryInterface {
     }
 
 }
+class URLOpeningMock: URLOpening {
+
+
+
+
+    //MARK: - canOpenURL
+
+    var canOpenURLCallsCount = 0
+    var canOpenURLCalled: Bool {
+        return canOpenURLCallsCount > 0
+    }
+    var canOpenURLReceivedUrl: (URL)?
+    var canOpenURLReceivedInvocations: [(URL)] = []
+    var canOpenURLReturnValue: Bool!
+    var canOpenURLClosure: ((URL) -> Bool)?
+
+    @MainActor
+    func canOpenURL(_ url: URL) -> Bool {
+        canOpenURLCallsCount += 1
+        canOpenURLReceivedUrl = url
+        canOpenURLReceivedInvocations.append(url)
+        if let canOpenURLClosure = canOpenURLClosure {
+            return canOpenURLClosure(url)
+        } else {
+            return canOpenURLReturnValue
+        }
+    }
+
+    //MARK: - openURL
+
+    var openURLCallsCount = 0
+    var openURLCalled: Bool {
+        return openURLCallsCount > 0
+    }
+    var openURLReceivedUrl: (URL)?
+    var openURLReceivedInvocations: [(URL)] = []
+    var openURLReturnValue: Bool!
+    var openURLClosure: ((URL) async -> Bool)?
+
+    @MainActor
+    func openURL(_ url: URL) async -> Bool {
+        openURLCallsCount += 1
+        openURLReceivedUrl = url
+        openURLReceivedInvocations.append(url)
+        if let openURLClosure = openURLClosure {
+            return await openURLClosure(url)
+        } else {
+            return openURLReturnValue
+        }
+    }
+
+}
 class WikipediaDeeplinkURLOpenerInterfaceMock: WikipediaDeeplinkURLOpenerInterface {
 
 

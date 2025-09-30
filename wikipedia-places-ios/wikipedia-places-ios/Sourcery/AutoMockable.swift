@@ -11,6 +11,8 @@
 extension BaseDependenciesInterface {}
 extension WikipediaDeeplinkURLOpenerInterface {}
 extension ErrorHandlerInterface {}
+extension WikipediaDeeplinkURLOpenerInterface {}
+extension URLOpening {}
 
 // Repositories
 extension LocationsRepositoryInterface {}

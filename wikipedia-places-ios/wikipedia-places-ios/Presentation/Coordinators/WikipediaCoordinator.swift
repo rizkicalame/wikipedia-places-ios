@@ -33,9 +33,9 @@ final class WikipediaCoordinator: CoordinatorInterface {
     func start() {
         Task {
             await deeplinkOpener.openDeeplinkWithCoordinatesIfPossible(latitude: location.latitude,
-                                                                  longitude: location.longitude,
-                                                                  in: navigationController,
-                                                                  errorHandler: errorHandler)
+                                                                       longitude: location.longitude,
+                                                                       in: navigationController,
+                                                                       errorHandler: errorHandler)
         }
     }
 }
