@@ -8,13 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-
-    // MARK: - Constants
-
-    enum Constants {
-
-    }
-
+    
     // MARK: - ViewModel
 
     @ObservedObject var viewModel: HomeViewModel
