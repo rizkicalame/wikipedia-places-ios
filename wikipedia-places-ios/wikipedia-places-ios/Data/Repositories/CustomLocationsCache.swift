@@ -7,26 +7,29 @@
 
 import Foundation
 
-final class CustomLocationsCache: CustomLocationsCacheInterface {
+/// Interface for cache implementations for custom locations.
+protocol CustomLocationsCacheInterface: Actor {
+    func getCustomLocations() -> [LocationDataModel]
+    func addLocations(_ locations: [LocationDataModel])
+    func clearCache()
+}
 
-    // MARK: - Shared
+actor CustomLocationsCache: CustomLocationsCacheInterface {
 
-    static var shared: CustomLocationsCacheInterface = CustomLocationsCache()
+    // MARK: - Properties
 
-    // MARK: - Init
-
-    init() {
-        self.inMemoryLocations = []
-    }
+    private var inMemoryLocations = [LocationDataModel]()
 
     // MARK: - LocationsCacheInterface
 
-    private(set) var inMemoryLocations: [LocationDataModel]
-
     /// Adds items in memory
     /// - Parameter items: The list of items to add.
-    func addItems(_ items: [LocationDataModel]) {
-        inMemoryLocations += items
+    func addLocations(_ locations: [LocationDataModel]) {
+        inMemoryLocations += locations
+    }
+
+    func getCustomLocations() -> [LocationDataModel] {
+        return inMemoryLocations
     }
 
     /// Clears the cache indefinitely.
