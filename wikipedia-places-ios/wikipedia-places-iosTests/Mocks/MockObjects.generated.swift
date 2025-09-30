@@ -1,4 +1,4 @@
-// Generated using Sourcery 2.2.5 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 2.2.7 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 import Foundation
@@ -46,16 +46,16 @@ class AddCustomLocationUseCaseInterfaceMock: AddCustomLocationUseCaseInterface {
     }
     var addCustomLocationNameLatitudeLongitudeReceivedArguments: (name: String?, latitude: String, longitude: String)?
     var addCustomLocationNameLatitudeLongitudeReceivedInvocations: [(name: String?, latitude: String, longitude: String)] = []
-    var addCustomLocationNameLatitudeLongitudeClosure: ((String?, String, String) throws -> Void)?
+    var addCustomLocationNameLatitudeLongitudeClosure: ((String?, String, String) async throws -> Void)?
 
-    func addCustomLocation(name: String?, latitude: String, longitude: String) throws {
+    func addCustomLocation(name: String?, latitude: String, longitude: String) async throws {
         addCustomLocationNameLatitudeLongitudeCallsCount += 1
         addCustomLocationNameLatitudeLongitudeReceivedArguments = (name: name, latitude: latitude, longitude: longitude)
         addCustomLocationNameLatitudeLongitudeReceivedInvocations.append((name: name, latitude: latitude, longitude: longitude))
         if let error = addCustomLocationNameLatitudeLongitudeThrowableError {
             throw error
         }
-        try addCustomLocationNameLatitudeLongitudeClosure?(name, latitude, longitude)
+        try await addCustomLocationNameLatitudeLongitudeClosure?(name, latitude, longitude)
     }
 
 }
@@ -84,46 +84,6 @@ class GetLocationsUseCaseInterfaceMock: GetLocationsUseCaseInterface {
         } else {
             return getLocationsReturnValue
         }
-    }
-
-}
-class HomeViewModelDelegateMock: HomeViewModelDelegate {
-
-
-
-
-    //MARK: - didTapAddCustomLocation
-
-    var didTapAddCustomLocationSenderCallsCount = 0
-    var didTapAddCustomLocationSenderCalled: Bool {
-        return didTapAddCustomLocationSenderCallsCount > 0
-    }
-    var didTapAddCustomLocationSenderReceivedSender: (HomeViewModel)?
-    var didTapAddCustomLocationSenderReceivedInvocations: [(HomeViewModel)] = []
-    var didTapAddCustomLocationSenderClosure: ((HomeViewModel) -> Void)?
-
-    func didTapAddCustomLocation(sender: HomeViewModel) {
-        didTapAddCustomLocationSenderCallsCount += 1
-        didTapAddCustomLocationSenderReceivedSender = sender
-        didTapAddCustomLocationSenderReceivedInvocations.append(sender)
-        didTapAddCustomLocationSenderClosure?(sender)
-    }
-
-    //MARK: - didTapLocation
-
-    var didTapLocationLocationSenderCallsCount = 0
-    var didTapLocationLocationSenderCalled: Bool {
-        return didTapLocationLocationSenderCallsCount > 0
-    }
-    var didTapLocationLocationSenderReceivedArguments: (location: LocationDomainModel, sender: HomeViewModel)?
-    var didTapLocationLocationSenderReceivedInvocations: [(location: LocationDomainModel, sender: HomeViewModel)] = []
-    var didTapLocationLocationSenderClosure: ((LocationDomainModel, HomeViewModel) -> Void)?
-
-    func didTapLocation(location: LocationDomainModel, sender: HomeViewModel) {
-        didTapLocationLocationSenderCallsCount += 1
-        didTapLocationLocationSenderReceivedArguments = (location: location, sender: sender)
-        didTapLocationLocationSenderReceivedInvocations.append((location: location, sender: sender))
-        didTapLocationLocationSenderClosure?(location, sender)
     }
 
 }
@@ -162,13 +122,13 @@ class LocationsRepositoryInterfaceMock: LocationsRepositoryInterface {
     }
     var createCustomLocationLocationReceivedLocation: (LocationDomainModel)?
     var createCustomLocationLocationReceivedInvocations: [(LocationDomainModel)] = []
-    var createCustomLocationLocationClosure: ((LocationDomainModel) -> Void)?
+    var createCustomLocationLocationClosure: ((LocationDomainModel) async -> Void)?
 
-    func createCustomLocation(location: LocationDomainModel) {
+    func createCustomLocation(location: LocationDomainModel) async {
         createCustomLocationLocationCallsCount += 1
         createCustomLocationLocationReceivedLocation = location
         createCustomLocationLocationReceivedInvocations.append(location)
-        createCustomLocationLocationClosure?(location)
+        await createCustomLocationLocationClosure?(location)
     }
 
 }
