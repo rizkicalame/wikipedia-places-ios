@@ -18,14 +18,14 @@ struct LocationCellView: View {
     // MARK: - View
 
     var body: some View {
-        Button(action: {
+        VStack(alignment: .leading) {
+            Text(name)
+            Text(coordinates)
+        }
+        .frame(maxWidth: .infinity, alignment: .init(horizontal: .leading, vertical: .center))
+        .contentShape(Rectangle())
+        .onTapGesture {
             onTap()
-        }, label: {
-            VStack(alignment: .leading) {
-                Text(name)
-                Text(coordinates)
-            }
-        })
-        .buttonStyle(.plain)
+        }
     }
 }

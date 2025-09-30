@@ -31,29 +31,31 @@ struct HomeView: View {
         Group {
             switch viewModel.state {
             case .loading:
-                loadingView()
+                loadingView
             case .error:
-                errorView()
+                errorView
             case .loaded:
-                loadedView()
+                loadedView
             }
         }
         .navigationTitle(viewModel.navigationTitle)
     }
 
-    func loadingView() -> some View {
+    var loadingView: some View {
         ProgressView()
             .task {
                 await self.viewModel.refreshLocations()
             }
     }
 
-    func loadedView() -> some View {
+    var loadedView: some View {
         List {
             Section {
                 ForEach(self.viewModel.locations, id: \.id) { location in
                     LocationCellView(name: location.presentedName,
-                                     coordinates: location.presentedCoordinates) { self.viewModel.onRowTapped(location: location)
+                                     coordinates: location.presentedCoordinates) {
+
+                            self.viewModel.onRowTapped(location: location)
                     }
                                      .accessibilityElement(children: .ignore)
                                      .accessibilityLabel(viewModel.accessibilityLabel(for: location))
@@ -64,7 +66,7 @@ struct HomeView: View {
 
             Section {
                 Button {
-                    self.viewModel.onAddCustomLocationTapped()
+                    self.viewModel.addCustomLocation()
                 } label: {
                     Text(viewModel.addCustomLocationButtonTitle)
                 }
@@ -80,7 +82,7 @@ struct HomeView: View {
         }
     }
 
-    func errorView() -> some View {
+    var errorView: some View {
         Text(viewModel.errorText)
     }
 }
