@@ -21,7 +21,7 @@ protocol APIClientInterface {
                                               keyPath: String?) async throws -> DataModel
 }
 
-final class APIClient: APIClientInterface {
+struct APIClient: APIClientInterface {
 
     // MARK: - APIError
 
@@ -81,7 +81,7 @@ final class APIClient: APIClientInterface {
     /// - Returns: The model to decode to.
     private func performRequest<DataModel: Decodable>(request: URLRequest,
                                                       keyPath: String?) async throws -> DataModel {
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
 
         guard validateResponse(response: response) else {
             throw APIError.invalidResponse
