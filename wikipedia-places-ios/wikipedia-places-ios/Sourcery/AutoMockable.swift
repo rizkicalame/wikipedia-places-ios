@@ -14,7 +14,4 @@ extension LocationsRepositoryInterface {}
 extension GetLocationsUseCaseInterface {}
 extension AddCustomLocationUseCaseInterface {}
 
-// Delegates
-extension HomeViewModelDelegate {}
-
 // sourcery:end

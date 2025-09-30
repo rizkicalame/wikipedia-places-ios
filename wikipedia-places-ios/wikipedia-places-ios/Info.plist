@@ -4,6 +4,10 @@
 <dict>
 	<key>API_URL</key>
 	<string>$(API_URL)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>wikipedia</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

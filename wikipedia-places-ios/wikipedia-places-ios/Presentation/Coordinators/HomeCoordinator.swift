@@ -8,74 +8,77 @@
 import UIKit
 import SwiftUI
 
-class HomeCoordinator: CoordinatorInterface {
+final class HomeCoordinator: CoordinatorInterface {
 
     // MARK: - Properties
 
     private let navigationController: UINavigationController
+    private let baseDependencies: any BaseDependenciesInterface
 
-    // MARK: - Home
-
-    private var homeViewController: UIViewController?
     private var homeViewModel: HomeViewModel?
+    private weak var presentingNavigationController: UINavigationController?
 
     // MARK: - Init
 
-    init(navigationController: UINavigationController) {
+    init(baseDependencies: BaseDependenciesInterface,
+         navigationController: UINavigationController) {
+        self.baseDependencies = baseDependencies
         self.navigationController = navigationController
     }
 
     // MARK: - CoordinatorInterface
 
-    @MainActor 
     func start() {
-        self.homeViewController = makeHomeViewController()
-        self.navigationController.setViewControllers([homeViewController!], animated: false)
+        let homeViewController = makeHomeViewController()
+        navigationController.setViewControllers([homeViewController], animated: false)
     }
 
     // MARK: - Private
 
     @objc
-    private func dismissNavigationController() {
-        self.navigationController.dismiss(animated: true)
+    private func dismissFlow(onCompletion: (() -> Void)?) {
+        presentingNavigationController?.dismiss(animated: true) {
+            onCompletion?()
+        }
+        presentingNavigationController = nil
     }
 
     private func deeplinkToWikipedia(location: LocationDomainModel) {
-        guard let url = URL(string: WikipediaDeeplinkHelper.getCoordinatesDeeplinkURL(location: location)) else {
-            return
-        }
-
-        UIApplication.shared.open(url) { success in
-            if !success {
-                // Error handling
-                let alertController = UIAlertController(title: "Oops! Deeplinking failed.", message: "We weren't able to deeplinking to the Wikipedia app.", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Close", style: .cancel)
-                alertController.addAction(action)
-                self.navigationController.present(alertController, animated: true)
-            }
-        }
+        let wikiCoordinator = WikipediaCoordinator(location: location,
+                                                   navigationController: self.navigationController,
+                                                   urlOpener: baseDependencies.urlOpener,
+                                                   errorHandler: baseDependencies.errorHandler)
+        wikiCoordinator.start()
     }
 
     // MARK: - Home
 
-
-    @MainActor
     /// Bootstrap dependencies for `Home`.
     /// Could be moved into a factory method or using dependency containers.
     /// - Returns: UIViewController for home
     private func makeHomeViewController() -> UIViewController {
-        let apiClient = APIClient(baseURL: Configuration.value(for: .apiURL))
-        let repository = LocationsRepository(apiClient: apiClient)
+        let repository = LocationsRepository(apiClient: baseDependencies.apiClient,
+                                             customLocationsCache: baseDependencies.customLocationsCache)
         let getLocationsUseCase = GetLocationsUseCase(repository: repository)
-        homeViewModel = HomeViewModel(getLocationsUseCase: getLocationsUseCase)
-        homeViewModel?.delegate = self
-        let view = HomeView(viewModel: homeViewModel!)
+        let viewModel = HomeViewModel(getLocationsUseCase: getLocationsUseCase)
+        self.homeViewModel = viewModel
+
+        homeViewModel?.onAddCustomLocationTapped = { [weak self] in
+            self?.presentAddCustomLocationView()
+        }
+
+        homeViewModel?.onLocationTapped = { [weak self] location in
+            self?.deeplinkToWikipedia(location: location)
+        }
+
+        let view = HomeView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }
 
-    @MainActor
-    private func refreshHomeViewController() async {
-       await homeViewModel?.refreshLocations()
+    private func refreshHomeViewController() {
+        Task {
+           await homeViewModel?.refreshLocations()
+        }
     }
 
     // MARK: - AddCustomLocation
@@ -83,45 +86,28 @@ class HomeCoordinator: CoordinatorInterface {
     private func presentAddCustomLocationView() {
         let viewController = makeAddCustomLocationViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
-        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissNavigationController))
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissFlow))
         self.navigationController.present(navigationController, animated: true)
+
+        presentingNavigationController = self.navigationController
     }
 
     /// Bootstrap dependencies for `AddCustomLocations`.
     /// Could be moved into a factory method or using dependency containers.
     /// - Returns: UIViewController for `AddCustomLocations`
     private func makeAddCustomLocationViewController() -> UIViewController {
-        let apiClient = APIClient(baseURL: Configuration.value(for: .apiURL))
-        let repository = LocationsRepository(apiClient: apiClient)
+        let repository = LocationsRepository(apiClient: baseDependencies.apiClient,
+                                             customLocationsCache: baseDependencies.customLocationsCache)
         let useCase = AddCustomLocationUseCase(repository: repository)
         let viewModel = AddCustomLocationViewModel(useCase: useCase)
-        viewModel.delegate = self
+
+        viewModel.onAddCustomLocationTapped = { [weak self] in
+            self?.dismissFlow {
+                self?.refreshHomeViewController()
+            }
+        }
+
         let view = AddCustomLocationView(viewModel: viewModel)
         return UIHostingController(rootView: view)
-    }
-}
-
-// MARK: - HomeViewModelDelegate
-
-extension HomeCoordinator: HomeViewModelDelegate {
-    func didTapAddCustomLocation(sender: HomeViewModel) {
-        presentAddCustomLocationView()
-    }
-
-    func didTapLocation(location: LocationDomainModel, sender: HomeViewModel) {
-        deeplinkToWikipedia(location: location)
-    }
-}
-
-// MARK: - AddCustomLocationViewModelDelegate
-
-extension HomeCoordinator: AddCustomLocationViewModelDelegate {
-    func didAddCustomLocation(sender: AddCustomLocationViewModel) {
-        // Dismiss prior to refreshing
-        self.navigationController.dismiss(animated: true)
-
-        Task {
-            await refreshHomeViewController()
-        }
     }
 }

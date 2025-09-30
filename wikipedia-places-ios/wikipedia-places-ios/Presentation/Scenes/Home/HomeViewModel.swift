@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol HomeViewModelDelegate: AnyObject {
-    func didTapAddCustomLocation(sender: HomeViewModel)
-    func didTapLocation(location: LocationDomainModel, sender: HomeViewModel)
-}
-
 @MainActor
 final class HomeViewModel: ObservableObject {
+
+    // MARK: - Events
+
+    var onAddCustomLocationTapped: (() -> Void)?
+    var onLocationTapped: ((LocationDomainModel) -> Void)?
 
     // MARK: - State
 
@@ -32,8 +32,6 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Properties
 
     private let getLocationsUseCase: GetLocationsUseCaseInterface
-
-    weak var delegate: HomeViewModelDelegate?
 
     // MARK: - Init
 
@@ -54,11 +52,11 @@ final class HomeViewModel: ObservableObject {
     }
 
     func onRowTapped(location: LocationDomainModel) {
-        delegate?.didTapLocation(location: location, sender: self)
+        onLocationTapped?(location)
     }
 
-    func onAddCustomLocationTapped() {
-        delegate?.didTapAddCustomLocation(sender: self)
+    func addCustomLocation() {
+        onAddCustomLocationTapped?()
     }
 
     // MARK: - Private
