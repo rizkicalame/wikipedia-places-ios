@@ -40,11 +40,11 @@ struct AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
     ///   - longitude: The longitude of the location. Should be a string castable to a Double, otherwise throws an error.
     func addCustomLocation(name: String?, latitude: String, longitude: String) async throws {
         guard let latitude = Double(latitude) else {
-            throw(ValidationErrors.invalidLatitudeProvided)
+            throw ValidationErrors.invalidLatitudeProvided
         }
 
         guard let longitude = Double(longitude) else {
-            throw(ValidationErrors.invalidLongitudeProvided)
+            throw ValidationErrors.invalidLongitudeProvided
         }
 
         let model = LocationDomainModel(name: name, latitude: latitude, longitude: longitude)
