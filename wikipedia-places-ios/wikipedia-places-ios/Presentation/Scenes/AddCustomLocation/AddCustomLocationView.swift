@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-protocol AddCustomLocationViewModelDelegate: AnyObject {
-    func didAddCustomLocation(sender: AddCustomLocationViewModel)
-}
-
 struct AddCustomLocationView: View {
+
+    // MARK: - Properties
+    
     @ObservedObject var viewModel: AddCustomLocationViewModel
 
     var body: some View {

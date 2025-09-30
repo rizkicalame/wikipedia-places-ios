@@ -7,7 +7,12 @@
 
 import Foundation
 
+@MainActor
 final class AddCustomLocationViewModel: ObservableObject {
+
+    // MARK: - Events
+
+    var onAddCustomLocationTapped: (() -> Void)?
 
     // MARK: - State
 
@@ -26,20 +31,6 @@ final class AddCustomLocationViewModel: ObservableObject {
 
     // MARK: - Computed
 
-    var errorText: String {
-        switch state {
-        case .unknownError:
-            return "An unknown error has occurred."
-        case .error(let validationErrors):
-            switch validationErrors {
-            case .invalidLatitudeProvided: return "Please provide a valid latitude."
-            case .invalidLongitudeProvided: return "Please provide a valid longitude."
-            }
-        case .idle:
-            return ""
-        }
-    }
-
     var shouldDisplayErrorMessage: Bool {
         return state != .idle
     }
@@ -47,8 +38,6 @@ final class AddCustomLocationViewModel: ObservableObject {
     // MARK: - Properties
 
     private let useCase: AddCustomLocationUseCaseInterface
-
-    weak var delegate: AddCustomLocationViewModelDelegate?
 
     // MARK: - Init
 
@@ -65,17 +54,19 @@ final class AddCustomLocationViewModel: ObservableObject {
     // MARK: - Private
 
     private func addCustomLocation() {
-        do {
-            try useCase.addCustomLocation(name: nameOfLocation,
-                                      latitude: latitude,
-                                      longitude: longitude)
-            self.delegate?.didAddCustomLocation(sender: self)
-        } catch {
-            guard let error = error as? AddCustomLocationUseCase.ValidationErrors else {
-                return state = .unknownError
-            }
+        Task {
+            do {
+                try await useCase.addCustomLocation(name: nameOfLocation,
+                                              latitude: latitude,
+                                              longitude: longitude)
+                onAddCustomLocationTapped?()
+            } catch {
+                guard let error = error as? AddCustomLocationUseCase.ValidationErrors else {
+                    return state = .unknownError
+                }
 
-            state = .error(error)
+                state = .error(error)
+            }
         }
     }
 }

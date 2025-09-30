@@ -42,4 +42,18 @@ extension AddCustomLocationViewModel {
     var navigationTitle: String {
         "Add custom location"
     }
+
+    var errorText: String {
+        switch state {
+        case .unknownError:
+            return "An unknown error has occurred."
+        case .error(let validationErrors):
+            switch validationErrors {
+            case .invalidLatitudeProvided: return "Please provide a valid latitude."
+            case .invalidLongitudeProvided: return "Please provide a valid longitude."
+            }
+        case .idle:
+            return ""
+        }
+    }
 }
