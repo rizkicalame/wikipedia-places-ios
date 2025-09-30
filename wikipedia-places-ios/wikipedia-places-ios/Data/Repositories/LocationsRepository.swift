@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocationsRepository: LocationsRepositoryInterface {
+struct LocationsRepository: LocationsRepositoryInterface {
 
     // MARK: - Properties
 
@@ -17,7 +17,7 @@ final class LocationsRepository: LocationsRepositoryInterface {
     // MARK: - Init
 
     init(apiClient: APIClientInterface,
-         customLocationsCache: CustomLocationsCacheInterface = CustomLocationsCache.shared) {
+         customLocationsCache: CustomLocationsCacheInterface) {
         self.apiClient = apiClient
         self.customLocationsCache = customLocationsCache
     }
@@ -36,7 +36,7 @@ final class LocationsRepository: LocationsRepositoryInterface {
             $0.toDomainModel()
         }
 
-        let customLocations = customLocationsCache.inMemoryLocations.map {
+        let customLocations = await customLocationsCache.getCustomLocations().map {
             $0.toDomainModel()
         }
 
@@ -45,8 +45,8 @@ final class LocationsRepository: LocationsRepositoryInterface {
     
     /// Creates a custom location and adds it to the cache. Preserved in memory alone.
     /// - Parameter location: The domain model representation of a location,
-    func createCustomLocation(location: LocationDomainModel) {
+    func createCustomLocation(location: LocationDomainModel) async {
         let dataModel = location.toDataModel()
-        customLocationsCache.addItems([dataModel])
+        await customLocationsCache.addLocations([dataModel])
     }
 }

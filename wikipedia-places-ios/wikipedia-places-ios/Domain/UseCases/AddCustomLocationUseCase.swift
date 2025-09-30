@@ -9,10 +9,10 @@ import Foundation
 
 /// Interface for this use case implementations.
 protocol AddCustomLocationUseCaseInterface {
-    func addCustomLocation(name: String?, latitude: String, longitude: String) throws
+    func addCustomLocation(name: String?, latitude: String, longitude: String) async throws
 }
 
-final class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
+struct AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
 
     // MARK: - ValidationError
 
@@ -38,7 +38,7 @@ final class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
     ///   - name: The name of the location. Optional.
     ///   - latitude: The latitude of the location. Should be a string castable to a Double, otherwise throws an error.
     ///   - longitude: The longitude of the location. Should be a string castable to a Double, otherwise throws an error.
-    func addCustomLocation(name: String?, latitude: String, longitude: String) throws {
+    func addCustomLocation(name: String?, latitude: String, longitude: String) async throws {
         guard let latitude = Double(latitude) else {
             throw(ValidationErrors.invalidLatitudeProvided)
         }
@@ -48,6 +48,6 @@ final class AddCustomLocationUseCase: AddCustomLocationUseCaseInterface {
         }
 
         let model = LocationDomainModel(name: name, latitude: latitude, longitude: longitude)
-        repository.createCustomLocation(location: model)
+        await repository.createCustomLocation(location: model)
     }
 }

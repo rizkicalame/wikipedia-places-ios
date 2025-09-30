@@ -12,7 +12,7 @@ protocol GetLocationsUseCaseInterface {
     func getLocations() async throws -> [LocationDomainModel]
 }
 
-final class GetLocationsUseCase: GetLocationsUseCaseInterface {
+struct GetLocationsUseCase: GetLocationsUseCaseInterface {
 
     // MARK: - Properties
 

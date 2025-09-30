@@ -10,5 +10,5 @@ import Foundation
 /// Interface for location repository implementations.
 protocol LocationsRepositoryInterface {
     func getLocations() async throws -> [LocationDomainModel]
-    func createCustomLocation(location: LocationDomainModel)
+    func createCustomLocation(location: LocationDomainModel) async
 }
