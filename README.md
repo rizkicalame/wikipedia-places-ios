@@ -62,13 +62,14 @@ The mock objects are now generated in the Xcode project under: `wikipedia-places
 - [] (Sample) UI tests - alas ran out of time to cover this, but we can always discuss during the technical.
 - [x] Sourcery
 
-***2025 update***
+***September 2025 update:***
 - [x] Applied Swift Concurrency to most areas;
 - [x] Rework on the coordinator part, moving away from the delegate pattern into view model initiated closures;
 - [x] Rework on deep linking into the Wikipedia app through `URLOpening` and `WikipediaDeeplinkURLOpener`;
 - [x] Introduction of a small base dependency container to re-use dependencies;
 - [x] Introduction of `ErrorHandler` to isolate presentation of error handling;
 - [x] Small rework on use cases and repositories, moving away from classes to structs.
+- [x] Included `PointFree`'s `SwiftConcurrencyExtras` library as a helper in testing concurrent code.
 
 ## Who to talk to
 - Rizki Calame - rtj.calame@gmail.com
